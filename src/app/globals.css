@@ -64,21 +64,30 @@
   background: rgba(255, 255, 255, 0.78);
 }
 
-/* Floating card hover (matches sample screenshot vibe) */
+/* Mobile menu - clean styles */
+@media (max-width: 767px) {
+  .mobile-menu-link {
+    @apply py-4 text-lg font-medium border-b border-slate-100 dark:border-slate-800;
+  }
+}
+
+/* Floating card with 3D tilt effect */
 .tilt-card {
+  /* Enable 3D transforms */
   transform-style: preserve-3d;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transition: border-color 220ms ease;
-  will-change: transform;
+  /* Don't add transform here - let JS control it */
 }
 
 .tilt-card:hover {
   border-color: rgba(16, 185, 129, 0.30);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
+              0 0 0 1px rgba(16, 185, 129, 0.1);
 }
 
 .dark .tilt-card:hover {
   border-color: rgba(16, 185, 129, 0.22);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(16, 185, 129, 0.15);
 }
 
 /* Smooth cursor */
@@ -280,11 +289,6 @@ body.has-mouse #flashlight {
 
 /* Mobile touch optimizations */
 @media (pointer: coarse) {
-  .tilt-card {
-    /* Reduce tilt effect on touch devices */
-    transform: none !important;
-  }
-  
   /* Larger touch targets */
   a, button {
     min-height: 44px;

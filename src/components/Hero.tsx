@@ -1,44 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
-
 export function Hero() {
-  const tiltCardsRef = useRef<HTMLDivElement[]>([]);
-
-  useEffect(() => {
-    const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
-
-    tiltCardsRef.current.forEach((card) => {
-      if (!card) return;
-      card.style.transformStyle = 'preserve-3d';
-
-      const handleMouseMove = (e: MouseEvent) => {
-        const rect = card.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-
-        const rotateY = (px - 0.5) * 10;
-        const rotateX = (0.5 - py) * 10;
-        const lift = 18;
-        const scale = 1.015;
-
-        card.style.transform = `perspective(900px) rotateX(${clamp(rotateX, -10, 10)}deg) rotateY(${clamp(rotateY, -10, 10)}deg) translateY(-${lift}px) scale(${scale})`;
-      };
-
-      const handleMouseLeave = () => {
-        card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
-      };
-
-      card.addEventListener('mousemove', handleMouseMove);
-      card.addEventListener('mouseleave', handleMouseLeave);
-
-      return () => {
-        card.removeEventListener('mousemove', handleMouseMove);
-        card.removeEventListener('mouseleave', handleMouseLeave);
-      };
-    });
-  }, []);
-
   return (
     <section className="min-h-screen flex items-center justify-center relative pt-24">
       <div className="container mx-auto px-6">
@@ -130,7 +92,7 @@ export function Hero() {
           </div>
 
           {/* Tech Stack Strip */}
-          <div className="mt-16 pt-8 border-t border-slate-200/70 dark:border-slate-800/50 flex flex-wrap justify-center gap-8 opacity-70 hover:opacity-100 transition-opacity">
+          <div className="mt-16 mb-20 pt-8 border-t border-slate-200/70 dark:border-slate-800/50 flex flex-wrap justify-center gap-8 opacity-70 hover:opacity-100 transition-opacity">
             <i className="fa-brands fa-aws text-3xl tech-icon" title="AWS" style={{ animationDelay: '0s' }}></i>
             <i className="fa-brands fa-docker text-3xl tech-icon" title="Docker" style={{ animationDelay: '0.1s' }}></i>
             <i className="fa-brands fa-python text-3xl tech-icon" title="Python" style={{ animationDelay: '0.2s' }}></i>

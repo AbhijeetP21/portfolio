@@ -4,7 +4,7 @@ import { patents, awards } from '@/data/patents';
 
 export function Patents() {
   return (
-    <section id="patents" className="py-24">
+    <section id="patents" className="py-16">
       <div className="container mx-auto px-6">
         <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
           <span className="text-primary-500">/</span> Intellectual Property &amp; Research
@@ -41,7 +41,7 @@ export function Patents() {
                 href={patent.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-surface p-6 rounded-xl flex items-start gap-4 tilt-card cursor-target hover:scale-[1.02] transition-transform"
+                className="glass-surface p-6 rounded-xl flex items-start gap-4 tilt-card cursor-target"
               >
                 {content}
               </a>

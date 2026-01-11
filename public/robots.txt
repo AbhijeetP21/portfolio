@@ -9,6 +9,4 @@ Disallow: /_next/
 Disallow: /api/
 
 # Sitemap location
-Sitemap: https://your-portfolio-domain.com/sitemap.xml
-
-# Note: Update the Sitemap URL above with your actual domain when deploying
+Sitemap: https://www.abhijeetpachpute.com/sitemap.xml

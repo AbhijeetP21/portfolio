@@ -2,7 +2,7 @@
 
 export function Education() {
   return (
-    <section id="education" className="py-24 relative">
+    <section id="education" className="py-16 relative">
       <div className="container mx-auto px-6">
         <div className="mb-14 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

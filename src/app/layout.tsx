@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://your-portfolio-domain.com';
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abhijeetpachpute.com';
 
 export const metadata: Metadata = {
   title: 'Abhijeet Pachpute | Software • AI • Security',

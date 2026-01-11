@@ -13,7 +13,7 @@ export function ThemeToggle({ mobile = false }: ThemeToggleProps) {
     return (
       <button
         className={`w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all grid place-items-center cursor-target ${
-          mobile ? 'md:hidden' : 'hidden md:grid'
+          mobile ? 'md:hidden' : ''
         }`}
         aria-label="Toggle theme"
       >

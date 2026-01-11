@@ -18,85 +18,94 @@ import { useEffect } from 'react';
 export default function Home() {
   useScrollReveal();
 
+  // Initialize custom 3D tilt effect
   useEffect(() => {
-    // Initialize enhanced 3D tilt card effects
-    const tiltCards = document.querySelectorAll('.tilt-card');
-    const clamp = (v: number, min: number, max: number) => Math.min(max, Math.max(min, v));
+    // Skip on touch devices
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const cleanupFunctions: Array<() => void> = [];
+    const cards = document.querySelectorAll<HTMLElement>('.tilt-card');
 
-    tiltCards.forEach((card) => {
-      const cardElement = card as HTMLElement;
-      
-      // Set initial styles for smooth 3D effect
-      cardElement.style.transformStyle = 'preserve-3d';
-      cardElement.style.backfaceVisibility = 'hidden';
-      cardElement.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
-      cardElement.style.willChange = 'transform';
-
-      const handleMouseMove = (e: MouseEvent) => {
-        const rect = cardElement.getBoundingClientRect();
-        const px = (e.clientX - rect.left) / rect.width;
-        const py = (e.clientY - rect.top) / rect.height;
-
-        // Calculate rotation based on mouse position (enhanced 3D effect)
-        const rotateY = (px - 0.5) * 20; // Increased for more pronounced tilt
-        const rotateX = (0.5 - py) * 20; // Increased for more pronounced tilt
-        const lift = 20;
-        const scale = 1.02;
-
-        // Clamp rotations to prevent excessive tilting
-        const clampedRotateX = clamp(rotateX, -15, 15);
-        const clampedRotateY = clamp(rotateY, -15, 15);
-
-        // Apply 3D transform with perspective
-        cardElement.style.transform = `perspective(1000px) rotateX(${clampedRotateX}deg) rotateY(${clampedRotateY}deg) translateY(-${lift}px) scale(${scale})`;
-        
-        // Add dynamic shadow based on tilt for depth
-        const shadowX = clampedRotateY * 0.5;
-        const shadowY = clampedRotateX * 0.5 + 10;
-        cardElement.style.boxShadow = `${shadowX}px ${shadowY}px 30px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(0, 0, 0, 0.05)`;
-      };
-
-      const handleMouseLeave = () => {
-        cardElement.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px) scale(1)';
-        cardElement.style.boxShadow = '';
-        cardElement.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.5s ease-out';
-      };
-
-      const handleMouseEnter = () => {
-        // Reset transition for smooth real-time tracking
-        cardElement.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s ease-out';
-      };
-
-      cardElement.addEventListener('mousemove', handleMouseMove);
-      cardElement.addEventListener('mouseleave', handleMouseLeave);
-      cardElement.addEventListener('mouseenter', handleMouseEnter);
-
-      // Store cleanup function
-      cleanupFunctions.push(() => {
-        cardElement.removeEventListener('mousemove', handleMouseMove);
-        cardElement.removeEventListener('mouseleave', handleMouseLeave);
-        cardElement.removeEventListener('mouseenter', handleMouseEnter);
-        cardElement.style.transform = '';
-        cardElement.style.boxShadow = '';
-        cardElement.style.transition = '';
-        cardElement.style.willChange = '';
-        cardElement.style.backfaceVisibility = '';
-      });
-    });
-
-    // Return cleanup function
-    return () => {
-      cleanupFunctions.forEach((cleanup) => cleanup());
+    const settings = {
+      max: 10,           // Max rotation in degrees (professional & subtle)
+      perspective: 1000, // Perspective value
+      scale: 1.025,      // Scale on hover (very subtle)
+      speed: 500,        // Animation speed ms
     };
 
-    // Set hover affordance for cursor
-    const setHover = (on: boolean) => document.body.classList.toggle('cursor-hover', on);
-    document.querySelectorAll('a, button, .cursor-target').forEach((el) => {
-      el.addEventListener('mouseenter', () => setHover(true));
-      el.addEventListener('mouseleave', () => setHover(false));
+    const handlers: Array<{ el: HTMLElement; enter: () => void; move: (e: MouseEvent) => void; leave: () => void }> = [];
+
+    cards.forEach((card) => {
+      const onEnter = () => {
+        card.style.transition = `transform ${settings.speed}ms ease-out`;
+      };
+
+      const onMove = (e: MouseEvent) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+
+        // Calculate rotation angles
+        const rotateX = ((y - centerY) / centerY) * -settings.max;
+        const rotateY = ((x - centerX) / centerX) * settings.max;
+
+        // Apply transform with !important via setProperty
+        card.style.setProperty(
+          'transform',
+          `perspective(${settings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${settings.scale})`,
+          'important'
+        );
+        card.style.transition = 'transform 100ms ease-out';
+      };
+
+      const onLeave = () => {
+        card.style.setProperty(
+          'transform',
+          `perspective(${settings.perspective}px) rotateX(0deg) rotateY(0deg) scale(1)`,
+          'important'
+        );
+        card.style.transition = `transform ${settings.speed}ms ease-out`;
+      };
+
+      card.addEventListener('mouseenter', onEnter);
+      card.addEventListener('mousemove', onMove);
+      card.addEventListener('mouseleave', onLeave);
+
+      handlers.push({ el: card, enter: onEnter, move: onMove, leave: onLeave });
     });
+
+    return () => {
+      handlers.forEach(({ el, enter, move, leave }) => {
+        el.removeEventListener('mouseenter', enter);
+        el.removeEventListener('mousemove', move);
+        el.removeEventListener('mouseleave', leave);
+        el.style.removeProperty('transform');
+        el.style.removeProperty('transition');
+      });
+    };
+  }, []);
+
+  // Set up cursor hover affordance
+  useEffect(() => {
+    const setHover = (on: boolean) => document.body.classList.toggle('cursor-hover', on);
+    
+    const handleMouseEnter = () => setHover(true);
+    const handleMouseLeave = () => setHover(false);
+    
+    const elements = document.querySelectorAll('a, button, .cursor-target');
+    elements.forEach((el) => {
+      el.addEventListener('mouseenter', handleMouseEnter);
+      el.addEventListener('mouseleave', handleMouseLeave);
+    });
+
+    return () => {
+      elements.forEach((el) => {
+        el.removeEventListener('mouseenter', handleMouseEnter);
+        el.removeEventListener('mouseleave', handleMouseLeave);
+      });
+    };
   }, []);
 
   return (

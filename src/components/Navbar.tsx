@@ -2,144 +2,207 @@
 
 import { useState, useEffect } from 'react';
 import { ThemeToggle } from './ThemeToggle';
-import { useNavbar } from '@/hooks/useNavbar';
 
 export function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  useNavbar();
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Check initial state
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Handle body scroll lock when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
-    document.body.classList.toggle('overflow-hidden');
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-    document.body.classList.remove('overflow-hidden');
   };
 
+  // Handle menu link clicks
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    closeMenu();
+    
+    setTimeout(() => {
+      // Handle home/top navigation (href is "#" or empty)
+      if (href === '#' || href === '') {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+      }
+      
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }, isMenuOpen ? 300 : 0);
+  };
+
+  const navLinks = [
+    { href: '#education', label: 'Education' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#patents', label: 'Research' },
+    { href: '#skills', label: 'Skills' },
+  ];
+
   return (
-    <nav id="navbar" className="fixed w-full z-50 transition-all duration-300 py-4">
-      <div className="container mx-auto px-6">
-        <div className="flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold tracking-tighter font-mono hover:text-primary-400 transition-colors cursor-target">
+    <>
+      {/* Main Navbar */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+          isScrolled
+            ? 'py-3 bg-white/80 dark:bg-slate-950/80 backdrop-blur-lg shadow-sm border-b border-slate-200/50 dark:border-slate-800/50'
+            : 'py-5 bg-transparent'
+        }`}
+      >
+        <nav className="container mx-auto px-6 flex items-center justify-between">
+          {/* Logo */}
+          <a
+            href="#"
+            onClick={(e) => handleNavClick(e, '#')}
+            className="text-2xl font-bold tracking-tighter font-mono text-slate-900 dark:text-white hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+          >
             &lt;AP /&gt;
           </a>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8 text-sm font-medium">
-            <a href="#education" className="hover:text-primary-400 transition-colors cursor-target">
-              Education
-            </a>
-            <a href="#experience" className="hover:text-primary-400 transition-colors cursor-target">
-              Experience
-            </a>
-            <a href="#projects" className="hover:text-primary-400 transition-colors cursor-target">
-              Projects
-            </a>
-            <a href="#patents" className="hover:text-primary-400 transition-colors cursor-target">
-              Research
-            </a>
-            <a href="#skills" className="hover:text-primary-400 transition-colors cursor-target">
-              Skills
-            </a>
-
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              >
+                {link.label}
+              </a>
+            ))}
+            
             <ThemeToggle />
-
+            
             <a
               href="#contact"
-              className="px-5 py-2 bg-accent-500 hover:bg-accent-400 text-white rounded-full transition-all transform hover:scale-105 cursor-target"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className="px-4 py-2 text-sm font-medium bg-accent-500 hover:bg-accent-400 text-white rounded-full transition-all"
             >
               Contact Me
             </a>
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            id="mobile-menu-btn"
-            onClick={toggleMenu}
-            className="md:hidden text-2xl focus:outline-none cursor-target p-2 -mr-2 active:scale-95 transition-transform"
-            aria-label="Open menu"
-            aria-expanded={isMenuOpen}
-          >
-            <i className={`fa-solid ${isMenuOpen ? 'fa-times' : 'fa-bars'} transition-transform duration-300`}></i>
-          </button>
-        </div>
-      </div>
+          <div className="md:hidden flex items-center gap-4">
+            <ThemeToggle />
+            <button
+              onClick={toggleMenu}
+              className="relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
+              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isMenuOpen}
+            >
+              <span
+                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
+                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
+                }`}
+              />
+              <span
+                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
+                  isMenuOpen ? 'opacity-0' : ''
+                }`}
+              />
+              <span
+                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
+                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
+                }`}
+              />
+            </button>
+          </div>
+        </nav>
+      </header>
 
       {/* Mobile Menu Overlay */}
       <div
-        id="mobile-menu"
-        className={`fixed inset-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md z-40 transform transition-transform duration-300 md:hidden flex flex-col items-center justify-center space-y-6 text-xl ${
-          isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+          isMenuOpen ? 'visible' : 'invisible'
         }`}
-        onClick={(e) => {
-          // Close menu when clicking on overlay background
-          if (e.target === e.currentTarget) {
-            closeMenu();
-          }
-        }}
       >
-        <button
-          id="close-menu-btn"
+        {/* Backdrop */}
+        <div
+          className={`absolute inset-0 bg-black/50 transition-opacity duration-300 ${
+            isMenuOpen ? 'opacity-100' : 'opacity-0'
+          }`}
           onClick={closeMenu}
-          className="absolute top-6 right-6 text-3xl text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white cursor-target p-2 active:scale-95 transition-all"
-          aria-label="Close menu"
-        >
-          <i className="fa-solid fa-times"></i>
-        </button>
+        />
 
-        <ThemeToggle mobile />
+        {/* Menu Panel */}
+        <div
+          className={`absolute top-0 right-0 h-full w-[280px] bg-white dark:bg-slate-950 shadow-2xl transition-transform duration-300 ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          {/* Close Button */}
+          <button
+            onClick={closeMenu}
+            className="absolute top-5 right-5 w-10 h-10 flex items-center justify-center text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
+            aria-label="Close menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
 
-        <a
-          href="#education"
-          onClick={closeMenu}
-          className="mobile-link hover:text-primary-400 cursor-target py-3 px-6 rounded-lg active:bg-slate-100 dark:active:bg-slate-800 transition-all transform active:scale-95"
-          style={{ animationDelay: '0.1s' }}
-        >
-          Education
-        </a>
-        <a
-          href="#experience"
-          onClick={closeMenu}
-          className="mobile-link hover:text-primary-400 cursor-target py-3 px-6 rounded-lg active:bg-slate-100 dark:active:bg-slate-800 transition-all transform active:scale-95"
-          style={{ animationDelay: '0.2s' }}
-        >
-          Experience
-        </a>
-        <a
-          href="#projects"
-          onClick={closeMenu}
-          className="mobile-link hover:text-primary-400 cursor-target py-3 px-6 rounded-lg active:bg-slate-100 dark:active:bg-slate-800 transition-all transform active:scale-95"
-          style={{ animationDelay: '0.3s' }}
-        >
-          Projects
-        </a>
-        <a
-          href="#patents"
-          onClick={closeMenu}
-          className="mobile-link hover:text-primary-400 cursor-target py-3 px-6 rounded-lg active:bg-slate-100 dark:active:bg-slate-800 transition-all transform active:scale-95"
-          style={{ animationDelay: '0.4s' }}
-        >
-          Research
-        </a>
-        <a
-          href="#skills"
-          onClick={closeMenu}
-          className="mobile-link hover:text-primary-400 cursor-target py-3 px-6 rounded-lg active:bg-slate-100 dark:active:bg-slate-800 transition-all transform active:scale-95"
-          style={{ animationDelay: '0.5s' }}
-        >
-          Skills
-        </a>
-        <a
-          href="#contact"
-          onClick={closeMenu}
-          className="mobile-link text-accent-500 cursor-target py-3 px-6 rounded-lg bg-accent-500/10 hover:bg-accent-500/20 active:bg-accent-500/30 transition-all transform active:scale-95 font-semibold"
-          style={{ animationDelay: '0.6s' }}
-        >
-          Contact
-        </a>
+          {/* Menu Links */}
+          <nav className="flex flex-col pt-20 px-8">
+            {navLinks.map((link, index) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
+                className={`py-4 text-lg font-medium text-slate-700 dark:text-slate-200 hover:text-primary-500 dark:hover:text-primary-400 border-b border-slate-100 dark:border-slate-800 transition-all duration-300 ${
+                  isMenuOpen
+                    ? 'translate-x-0 opacity-100'
+                    : 'translate-x-8 opacity-0'
+                }`}
+                style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
+              >
+                {link.label}
+              </a>
+            ))}
+            
+            <a
+              href="#contact"
+              onClick={(e) => handleNavClick(e, '#contact')}
+              className={`mt-6 px-6 py-3 text-center text-sm font-medium bg-accent-500 hover:bg-accent-400 text-white rounded-full transition-all duration-300 ${
+                isMenuOpen
+                  ? 'translate-x-0 opacity-100'
+                  : 'translate-x-8 opacity-0'
+              }`}
+              style={{ transitionDelay: isMenuOpen ? `${navLinks.length * 50}ms` : '0ms' }}
+            >
+              Contact Me
+            </a>
+          </nav>
+        </div>
       </div>
-    </nav>
+    </>
   );
 }

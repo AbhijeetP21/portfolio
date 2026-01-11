@@ -74,17 +74,6 @@ export const projects: Project[] = [
     },
   },
   {
-    title: 'Safety H‑Shield (IoT)',
-    description: 'Women safety wearable with GPS tracking, emergency alerting, and biometric authentication. Edge-based threat detection with ~3s response window.',
-    icon: 'fa-shield-heart',
-    iconColor: 'text-red-500',
-    borderColor: 'hover:border-red-500/50',
-    tags: ['C++', 'GSM/BLE', 'AWS IoT'],
-    links: {
-      demo: 'https://6474fc7dad8ac00008e69c34--steady-creponne-a65d1e.netlify.app/',
-    },
-  },
-  {
     title: 'Enterprise Warranty System',
     description: 'Scalable backend for product verification and analytics. Optimized async data retrieval and database performance for faster decision workflows.',
     icon: 'fa-qrcode',

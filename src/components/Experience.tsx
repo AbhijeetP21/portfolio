@@ -28,7 +28,7 @@ const titleColorMap: Record<string, string> = {
 
 export function Experience() {
   return (
-    <section id="experience" className="py-24 relative">
+    <section id="experience" className="py-16 relative">
       <div className="container mx-auto px-6">
         <div className="mb-16 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">

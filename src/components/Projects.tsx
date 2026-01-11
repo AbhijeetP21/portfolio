@@ -97,7 +97,7 @@ export function Projects() {
 
   return (
     <>
-      <section id="projects" className="py-24 bg-slate-50/60 dark:bg-slate-900/50">
+      <section id="projects" className="py-16 bg-slate-50/60 dark:bg-slate-900/50">
         <div className="container mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12">
             <div>
@@ -127,7 +127,7 @@ export function Projects() {
                 {/* Project Preview: YouTube Embed, Live Preview, or Images */}
                 {project.youtubeUrl ? (
                   // YouTube Embed (highest priority)
-                  <div className="project-image-container relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <div className="project-image-container relative w-full h-56 overflow-hidden bg-slate-100 dark:bg-slate-800">
                     {(() => {
                       const videoId = getYouTubeVideoId(project.youtubeUrl!);
                       if (videoId) {
@@ -179,7 +179,7 @@ export function Projects() {
                   </div>
                 ) : project.liveUrl ? (
                   // Live Site Preview (iframe)
-                  <div className="project-image-container relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <div className="project-image-container relative w-full h-56 overflow-hidden bg-slate-100 dark:bg-slate-800">
                     <iframe
                       src={project.liveUrl}
                       title={`${project.title} live preview`}
@@ -202,7 +202,7 @@ export function Projects() {
                 ) : project.images && project.images.length > 0 ? (
                   // Fallback to Images
                   <div
-                    className="project-image-container relative w-full h-48 overflow-hidden cursor-pointer bg-slate-100 dark:bg-slate-800"
+                    className="project-image-container relative w-full h-56 overflow-hidden cursor-pointer bg-slate-100 dark:bg-slate-800"
                     onClick={() => openLightbox(project.images!, 0)}
                   >
                     <img
@@ -245,7 +245,7 @@ export function Projects() {
                           title="Patent Filed"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <i className="fa-solid fa-certificate"></i>
+                          <i className="fa-solid fa-certificate text-lg"></i>
                         </a>
                       )}
                       {project.links?.paper && (
@@ -255,7 +255,7 @@ export function Projects() {
                           title="Research Paper"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <i className="fa-solid fa-scroll"></i>
+                          <i className="fa-solid fa-scroll text-lg"></i>
                         </a>
                       )}
                       {project.links?.github && (
@@ -267,7 +267,7 @@ export function Projects() {
                           title="View on GitHub"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <i className="fa-brands fa-github"></i>
+                          <i className="fa-brands fa-github text-lg"></i>
                         </a>
                       )}
                       {project.links?.demo && (
@@ -279,7 +279,7 @@ export function Projects() {
                           title="View Demo"
                           onClick={(e) => e.stopPropagation()}
                         >
-                          <i className="fa-solid fa-external-link-alt"></i>
+                          <i className="fa-solid fa-external-link-alt text-lg"></i>
                         </a>
                       )}
                       {project.images && project.images.length > 0 && (
@@ -291,7 +291,7 @@ export function Projects() {
                           className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                           title="View Screenshots"
                         >
-                          <i className="fa-solid fa-images"></i>
+                          <i className="fa-solid fa-images text-lg"></i>
                         </button>
                       )}
                     </div>
