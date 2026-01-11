@@ -95,7 +95,7 @@ export function Hero() {
               View My Work
             </a>
             <a
-              href="/Abhijeet_MASTER_Resume (1).pdf"
+              href="/Abhijeet_Resume.pdf"
               target="_blank"
               className="px-8 py-4 glass-surface text-slate-950 dark:text-white font-semibold rounded-full hover:opacity-95 transition-all flex items-center gap-2 group cursor-target"
             >

@@ -5,6 +5,7 @@ export interface Patent {
   icon: string;
   iconColor: string;
   badgeColor: string;
+  link?: string; // URL for IEEE publications or patent links
 }
 
 export const patents: Patent[] = [
@@ -31,6 +32,7 @@ export const patents: Patent[] = [
     icon: 'fa-book-open',
     iconColor: 'text-primary-500',
     badgeColor: 'text-primary-600 dark:text-primary-500 border-primary-500/30',
+    link: 'https://ieeexplore.ieee.org/document/10392101/',
   },
   {
     type: 'IEEE PUBLICATION',
@@ -39,6 +41,7 @@ export const patents: Patent[] = [
     icon: 'fa-book-open',
     iconColor: 'text-primary-500',
     badgeColor: 'text-primary-600 dark:text-primary-500 border-primary-500/30',
+    link: 'https://ieeexplore.ieee.org/document/10014718',
   },
 ];
 

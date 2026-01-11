@@ -4,6 +4,22 @@ import { useState, useRef, useEffect } from 'react';
 import { projects } from '@/data/projects';
 import { Lightbox } from './Lightbox';
 
+// Helper function to extract YouTube video ID from various URL formats
+function getYouTubeVideoId(url: string): string | null {
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
+    /youtube\.com\/watch\?.*v=([^&\n?#]+)/,
+  ];
+  
+  for (const pattern of patterns) {
+    const match = url.match(pattern);
+    if (match && match[1]) {
+      return match[1];
+    }
+  }
+  return null;
+}
+
 export function Projects() {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [lightboxImages, setLightboxImages] = useState<string[]>([]);
@@ -108,8 +124,83 @@ export function Projects() {
                 }}
                 className={`glass-surface rounded-2xl overflow-hidden ${project.borderColor} transition-all duration-300 group tilt-card cursor-target`}
               >
-                {/* Project Image */}
-                {project.images && project.images.length > 0 && (
+                {/* Project Preview: YouTube Embed, Live Preview, or Images */}
+                {project.youtubeUrl ? (
+                  // YouTube Embed (highest priority)
+                  <div className="project-image-container relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    {(() => {
+                      const videoId = getYouTubeVideoId(project.youtubeUrl!);
+                      if (videoId) {
+                        return (
+                          <>
+                            <iframe
+                              src={`https://www.youtube.com/embed/${videoId}?rel=0&modestbranding=1`}
+                              title={`${project.title} video`}
+                              className="w-full h-full"
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                              allowFullScreen
+                              loading="lazy"
+                            />
+                            {project.liveUrl && (
+                              <div className="absolute bottom-2 right-2 z-10">
+                                <a
+                                  href={project.liveUrl}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="bg-accent-500 hover:bg-accent-400 text-white px-3 py-1.5 rounded-full text-xs font-semibold transition-all transform hover:scale-105 flex items-center gap-1.5 shadow-lg"
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <i className="fa-solid fa-external-link-alt"></i>
+                                  Play Live
+                                </a>
+                              </div>
+                            )}
+                          </>
+                        );
+                      }
+                      // Fallback to live preview or images if video ID extraction fails
+                      return project.liveUrl ? (
+                        <iframe
+                          src={project.liveUrl}
+                          title={`${project.title} live preview`}
+                          className="w-full h-full"
+                          loading="lazy"
+                          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                        />
+                      ) : project.images && project.images.length > 0 ? (
+                        <img
+                          src={project.images[0]}
+                          alt={`${project.title} screenshot`}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : null;
+                    })()}
+                  </div>
+                ) : project.liveUrl ? (
+                  // Live Site Preview (iframe)
+                  <div className="project-image-container relative w-full h-48 overflow-hidden bg-slate-100 dark:bg-slate-800">
+                    <iframe
+                      src={project.liveUrl}
+                      title={`${project.title} live preview`}
+                      className="w-full h-full"
+                      loading="lazy"
+                      sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox"
+                    />
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center pointer-events-none">
+                      <a
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="opacity-0 group-hover:opacity-100 transition-opacity bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold pointer-events-auto"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <i className="fa-solid fa-external-link-alt mr-2"></i>Open Live Site
+                      </a>
+                    </div>
+                  </div>
+                ) : project.images && project.images.length > 0 ? (
+                  // Fallback to Images
                   <div
                     className="project-image-container relative w-full h-48 overflow-hidden cursor-pointer bg-slate-100 dark:bg-slate-800"
                     onClick={() => openLightbox(project.images!, 0)}
@@ -139,7 +230,7 @@ export function Projects() {
                       </div>
                     </div>
                   </div>
-                )}
+                ) : null}
 
                 <div className="p-8 h-full flex flex-col">
                   <div className="flex justify-between items-start mb-6">

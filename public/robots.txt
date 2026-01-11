@@ -1,0 +1,14 @@
+# robots.txt for Portfolio Website
+
+# Allow all search engines to crawl the site
+User-agent: *
+Allow: /
+
+# Disallow crawling of Next.js internal files
+Disallow: /_next/
+Disallow: /api/
+
+# Sitemap location
+Sitemap: https://your-portfolio-domain.com/sitemap.xml
+
+# Note: Update the Sitemap URL above with your actual domain when deploying

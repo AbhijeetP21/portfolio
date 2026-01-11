@@ -7,6 +7,8 @@ export interface Project {
   tags: string[];
   images?: string[]; // Array of image paths for screenshots
   featured?: boolean; // Featured projects appear first
+  youtubeUrl?: string; // YouTube video URL for embed (takes priority over images)
+  liveUrl?: string; // Live site URL for preview (used if no youtubeUrl)
   links?: {
     github?: string;
     demo?: string;
@@ -29,9 +31,23 @@ export const projects: Project[] = [
       '/projects/dinodash/dinodash_ingame.png',
       '/projects/dinodash/dinodash_night.png',
     ],
+    youtubeUrl: 'https://youtu.be/naddU47TrCw?si=yloByl8n1Hw-KhiU',
+    liveUrl: 'https://abhijeetp21.github.io/Dinodash-play/',
     links: {
       github: 'https://github.com/AbhijeetP21/Dinodash',
       demo: 'https://abhijeetp21.github.io/Dinodash-play/',
+    },
+  },
+  {
+    title: 'Custom Unix Shell',
+    description: 'A minimal Unix-like shell implementation supporting command execution, piping, I/O redirections (>, <, >>), background execution (&), logical operators (&&, ||), and command history (!n). Built in C for CS5460/6460 Operating Systems.',
+    icon: 'fa-terminal',
+    iconColor: 'text-orange-500',
+    borderColor: 'hover:border-orange-500/50',
+    tags: ['C', 'Operating Systems', 'Shell'],
+    youtubeUrl: 'https://www.youtube.com/watch?v=MRQHSn69ySQ&t=12s',
+    links: {
+      github: 'https://github.com/AbhijeetP21/Custom-Unix-Shell',
     },
   },
   {
