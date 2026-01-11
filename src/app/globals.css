@@ -1,0 +1,312 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+
+/* --- Theme variables --- */
+:root {
+  --scroll-track: #f1f5f9;
+  --scroll-thumb: #cbd5e1;
+  --scroll-thumb-hover: #94a3b8;
+
+  --cursor-ring: rgba(99, 102, 241, 0.25);
+  --cursor-dot: rgba(16, 185, 129, 0.95);
+
+  --flashlight: rgba(99, 102, 241, 0.10);
+  --flashlight-size: 260px;
+  --flashlight-blend: multiply;
+}
+
+.dark {
+  --scroll-track: #0f172a;
+  --scroll-thumb: #334155;
+  --scroll-thumb-hover: #475569;
+  --flashlight: rgba(255, 255, 255, 0.11);
+  --flashlight-blend: screen;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scroll-track);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scroll-thumb);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scroll-thumb-hover);
+}
+
+/* Gradient Text */
+.text-gradient {
+  background: linear-gradient(to right, #818cf8, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Glass surfaces (auto adapts) */
+.glass-surface {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: rgba(30, 41, 59, 0.70);
+}
+
+.light .glass-surface {
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+/* Floating card hover (matches sample screenshot vibe) */
+.tilt-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: border-color 220ms ease;
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  border-color: rgba(16, 185, 129, 0.30);
+}
+
+.dark .tilt-card:hover {
+  border-color: rgba(16, 185, 129, 0.22);
+}
+
+/* Smooth cursor */
+#cursorRing,
+#cursorDot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+}
+
+#cursorRing {
+  width: 44px;
+  height: 44px;
+  border-radius: 9999px;
+  border: 1px solid var(--cursor-ring);
+  box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.06);
+  transition: width 160ms ease, height 160ms ease, box-shadow 160ms ease, opacity 200ms ease;
+  opacity: 0;
+  background: transparent;
+}
+
+#cursorDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: var(--cursor-dot);
+  box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
+  transition: transform 160ms ease, opacity 200ms ease;
+  opacity: 0;
+}
+
+.cursor-hover #cursorRing {
+  width: 58px;
+  height: 58px;
+  box-shadow: 0 0 0 14px rgba(99, 102, 241, 0.07);
+}
+
+.cursor-click #cursorDot {
+  transform: translate(-50%, -50%) scale(0.7);
+}
+
+@media (pointer: coarse) {
+  #cursorRing,
+  #cursorDot {
+    display: none;
+  }
+  #flashlight {
+    display: none;
+  }
+}
+
+/* Flashlight overlay (subtle spotlight) */
+#flashlight {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 5;
+  opacity: 0;
+  transition: opacity 240ms ease;
+  mix-blend-mode: var(--flashlight-blend);
+  background: radial-gradient(
+    circle var(--flashlight-size) at var(--mx, 50vw) var(--my, 50vh),
+    var(--flashlight),
+    transparent 60%
+  );
+}
+
+body.has-mouse #flashlight {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #flashlight {
+    transition: none;
+  }
+  #cursorRing,
+  #cursorDot {
+    transition: none;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.animate-pulse-slow {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 20s linear infinite;
+}
+
+/* Loading skeleton */
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* Tech stack icon animations */
+.tech-icon {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.tech-icon:hover {
+  transform: translateY(-5px) scale(1.1);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+}
+
+/* Mobile touch optimizations */
+@media (pointer: coarse) {
+  .tilt-card {
+    /* Reduce tilt effect on touch devices */
+    transform: none !important;
+  }
+  
+  /* Larger touch targets */
+  a, button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
