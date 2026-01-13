@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=JetBrains+Mono:wght@400;700&display=swap');
+/* Google Fonts loaded via <link> in layout.tsx for better performance */
 
 /* --- Theme variables --- */
 :root {

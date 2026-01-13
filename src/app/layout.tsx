@@ -1,6 +1,21 @@
 import type { Metadata } from 'next';
+import { Inter, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './globals.css';
+
+// Optimized font loading via next/font (self-hosted, no external requests)
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-inter',
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-mono',
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abhijeetpachpute.com';
 
@@ -93,7 +108,7 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${inter.variable} ${jetbrainsMono.variable}`}>
       <head>
         <script
           type="application/ld+json"
@@ -108,7 +123,6 @@ export default function RootLayout({
           rel="apple-touch-icon"
           href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20viewBox%3D%220%200%2064%2064%22%3E%0A%20%20%3Cdefs%3E%0A%20%20%20%20%3ClinearGradient%20id%3D%22g%22%20x1%3D%220%22%20y1%3D%220%22%20x2%3D%221%22%20y2%3D%221%22%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220%22%20stop-color%3D%22%2310b981%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%220.55%22%20stop-color%3D%22%236366f1%22/%3E%0A%20%20%20%20%20%20%3Cstop%20offset%3D%221%22%20stop-color%3D%22%230ea5e9%22/%3E%0A%20%20%20%20%3C/linearGradient%3E%0A%20%20%3C/defs%3E%0A%20%20%3Crect%20x%3D%224%22%20y%3D%224%22%20width%3D%2256%22%20height%3D%2256%22%20rx%3D%2214%22%20fill%3D%22url%28%23g%29%22/%3E%0A%20%20%3Cpath%20d%3D%22M20%2044V20h8.8c6.4%200%2010.2%203%2010.2%208.2%200%204.8-3.2%207.7-8.6%207.7H26v8.1h-6zM26%2031.4h3.8c2.6%200%204.2-1.1%204.2-3.2%200-2.2-1.6-3.3-4.2-3.3H26v6.5z%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.92%22/%3E%0A%20%20%3Cpath%20d%3D%22M40%2044l-4.7-12.6h6.1L46%2044h-6z%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.92%22/%3E%0A%3C/svg%3E"
         />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
       </head>
       <body className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 selection:bg-primary-500 selection:text-white antialiased overflow-x-hidden">
         {children}
