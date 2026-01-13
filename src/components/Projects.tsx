@@ -237,7 +237,7 @@ export function Projects() {
                     <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
                       <i className={`fa-solid ${project.icon} text-2xl ${project.iconColor}`}></i>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex items-center gap-3">
                       {project.links?.patent && (
                         <a
                           href="#"
