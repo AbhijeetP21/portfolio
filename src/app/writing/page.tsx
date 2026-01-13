@@ -83,13 +83,14 @@ export default function WritingPage() {
             &lt;AP /&gt;
           </Link>
 
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 sm:gap-6">
             <Link
               href="/"
-              className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+              className="flex items-center text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
             >
               <i className="fa-solid fa-arrow-left mr-2"></i>
-              Back to Portfolio
+              <span className="hidden sm:inline">Back to Portfolio</span>
+              <span className="sm:hidden">Back</span>
             </Link>
             <ThemeToggle />
           </div>

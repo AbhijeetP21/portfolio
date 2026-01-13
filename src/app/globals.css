@@ -322,20 +322,24 @@ select:focus-visible,
   outline-offset: 2px;
 }
 
-/* Skip link for keyboard users */
+/* Skip link for keyboard users - completely hidden until focused */
 .skip-link {
   position: absolute;
-  top: -40px;
   left: 0;
   background: #6366f1;
   color: white;
   padding: 8px 16px;
   z-index: 100;
-  transition: top 0.2s;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.2s, opacity 0.2s;
 }
 
 .skip-link:focus {
-  top: 0;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 /* Smooth scrolling */
