@@ -92,7 +92,7 @@ export function Hero() {
           </div>
 
           {/* Tech Stack Strip */}
-          <div className="mt-16 mb-20 pt-8 border-t border-slate-200/70 dark:border-slate-800/50 flex flex-wrap justify-center gap-8 opacity-70 hover:opacity-100 transition-opacity">
+          <div className="mt-14 mb-16 pt-8 border-t border-slate-200/70 dark:border-slate-800/50 flex flex-wrap justify-center gap-8 opacity-70 hover:opacity-100 transition-opacity">
             <i className="fa-brands fa-aws text-3xl tech-icon" title="AWS" style={{ animationDelay: '0s' }}></i>
             <i className="fa-brands fa-docker text-3xl tech-icon" title="Docker" style={{ animationDelay: '0.1s' }}></i>
             <i className="fa-brands fa-python text-3xl tech-icon" title="Python" style={{ animationDelay: '0.2s' }}></i>
