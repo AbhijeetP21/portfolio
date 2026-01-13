@@ -296,6 +296,48 @@ body.has-mouse #flashlight {
   }
 }
 
+/* Keyboard Accessibility - Focus States */
+/* Use focus-visible to show focus rings only for keyboard navigation */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Specific focus styles for rounded elements */
+.rounded-full:focus-visible {
+  outline: 2px solid #6366f1;
+  outline-offset: 3px;
+}
+
+/* Focus styles for cards and glass surfaces */
+.glass-surface:focus-visible,
+.tilt-card:focus-visible {
+  outline: 2px solid #10b981;
+  outline-offset: 2px;
+}
+
+/* Skip link for keyboard users */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #6366f1;
+  color: white;
+  padding: 8px 16px;
+  z-index: 100;
+  transition: top 0.2s;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* Smooth scrolling */
 html {
   scroll-behavior: smooth;

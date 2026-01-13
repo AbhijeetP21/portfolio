@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar';
 import { CustomCursor } from '@/components/CustomCursor';
 import { BackgroundEffects } from '@/components/BackgroundEffects';
 import { Hero } from '@/components/Hero';
+import { About } from '@/components/About';
 import { Education } from '@/components/Education';
 import { Experience } from '@/components/Experience';
 import { Projects } from '@/components/Projects';
@@ -27,9 +28,9 @@ export default function Home() {
     const cards = document.querySelectorAll<HTMLElement>('.tilt-card');
 
     const settings = {
-      max: 10,           // Max rotation in degrees (professional & subtle)
+      max: 8.5,          // Max rotation in degrees (reduced 15% for subtlety)
       perspective: 1000, // Perspective value
-      scale: 1.025,      // Scale on hover (very subtle)
+      scale: 1.021,      // Scale on hover (reduced 15%)
       speed: 500,        // Animation speed ms
     };
 
@@ -110,20 +111,27 @@ export default function Home() {
 
   return (
     <ToastProvider>
+      {/* Skip link for keyboard accessibility */}
+      <a href="#main-content" className="skip-link">
+        Skip to main content
+      </a>
       <CustomCursor />
       <BackgroundEffects />
       <Navbar />
-      <Hero />
+      <main id="main-content">
+        <Hero />
+      <About />
       <Education />
       <Experience />
       <Projects />
       <Patents />
       <Skills />
       <Contact />
+      </main>
       <Toast />
       <footer className="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-sm">
         <p>
-          &copy; 2024 Abhijeet Pachpute. Crafted with <i className="fa-solid fa-code text-primary-500"></i> and{' '}
+          &copy; {new Date().getFullYear()} Abhijeet Pachpute. Crafted with <i className="fa-solid fa-code text-primary-500"></i> and{' '}
           <i className="fa-solid fa-coffee text-yellow-600"></i>.
         </p>
       </footer>

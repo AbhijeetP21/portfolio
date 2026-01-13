@@ -28,7 +28,7 @@ export function Patents() {
                   {patent.link && (
                     <div className="mt-2 flex items-center gap-2 text-xs text-primary-600 dark:text-primary-400">
                       <i className="fa-solid fa-external-link-alt"></i>
-                      <span>View on IEEE Xplore</span>
+                      <span>{patent.type === 'PATENT FILED' ? 'Search on IP India' : 'View on IEEE Xplore'}</span>
                     </div>
                   )}
                 </div>

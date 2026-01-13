@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { ThemeToggle } from './ThemeToggle';
 
 export function Navbar() {
@@ -64,6 +65,7 @@ export function Navbar() {
     { href: '#projects', label: 'Projects' },
     { href: '#patents', label: 'Research' },
     { href: '#skills', label: 'Skills' },
+    { href: '/writing', label: 'Writing', isPage: true },
   ];
 
   return (
@@ -88,16 +90,26 @@ export function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) =>
+              link.isPage ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="text-sm font-medium text-slate-600 dark:text-slate-300 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             
             <ThemeToggle />
             
@@ -110,30 +122,18 @@ export function Navbar() {
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-4">
+          {/* Mobile Menu Button - hidden when menu is open */}
+          <div className={`md:hidden flex items-center gap-4 transition-opacity duration-300 ${isMenuOpen ? 'opacity-0 pointer-events-none' : 'opacity-100'}`}>
             <ThemeToggle />
             <button
               onClick={toggleMenu}
               className="relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 focus:outline-none"
-              aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
+              aria-label="Open menu"
               aria-expanded={isMenuOpen}
             >
-              <span
-                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
-                  isMenuOpen ? 'rotate-45 translate-y-2' : ''
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
-                  isMenuOpen ? 'opacity-0' : ''
-                }`}
-              />
-              <span
-                className={`w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300 ${
-                  isMenuOpen ? '-rotate-45 -translate-y-2' : ''
-                }`}
-              />
+              <span className="w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300" />
+              <span className="w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300" />
+              <span className="w-6 h-0.5 bg-slate-900 dark:bg-white transition-all duration-300" />
             </button>
           </div>
         </nav>
@@ -141,7 +141,7 @@ export function Navbar() {
 
       {/* Mobile Menu Overlay */}
       <div
-        className={`fixed inset-0 z-40 md:hidden transition-all duration-300 ${
+        className={`fixed inset-0 z-[60] md:hidden transition-all duration-300 ${
           isMenuOpen ? 'visible' : 'invisible'
         }`}
       >
@@ -172,21 +172,37 @@ export function Navbar() {
 
           {/* Menu Links */}
           <nav className="flex flex-col pt-20 px-8">
-            {navLinks.map((link, index) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={(e) => handleNavClick(e, link.href)}
-                className={`py-4 text-lg font-medium text-slate-700 dark:text-slate-200 hover:text-primary-500 dark:hover:text-primary-400 border-b border-slate-100 dark:border-slate-800 transition-all duration-300 ${
-                  isMenuOpen
-                    ? 'translate-x-0 opacity-100'
-                    : 'translate-x-8 opacity-0'
-                }`}
-                style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link, index) =>
+              link.isPage ? (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={`py-4 text-lg font-medium text-slate-700 dark:text-slate-200 hover:text-primary-500 dark:hover:text-primary-400 border-b border-slate-100 dark:border-slate-800 transition-all duration-300 ${
+                    isMenuOpen
+                      ? 'translate-x-0 opacity-100'
+                      : 'translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className={`py-4 text-lg font-medium text-slate-700 dark:text-slate-200 hover:text-primary-500 dark:hover:text-primary-400 border-b border-slate-100 dark:border-slate-800 transition-all duration-300 ${
+                    isMenuOpen
+                      ? 'translate-x-0 opacity-100'
+                      : 'translate-x-8 opacity-0'
+                  }`}
+                  style={{ transitionDelay: isMenuOpen ? `${index * 50}ms` : '0ms' }}
+                >
+                  {link.label}
+                </a>
+              )
+            )}
             
             <a
               href="#contact"

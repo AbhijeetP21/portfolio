@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { Analytics } from '@vercel/analytics/react';
 import './globals.css';
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.abhijeetpachpute.com';
@@ -31,11 +32,20 @@ export const metadata: Metadata = {
     title: 'Abhijeet Pachpute | Software • AI • Security',
     description: 'MS CS @ University of Utah. Building production software, shipping applied AI, and caring obsessively about security and reliability.',
     siteName: 'Abhijeet Pachpute Portfolio',
+    images: [
+      {
+        url: `${siteUrl}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: 'Abhijeet Pachpute - Building Intelligent & Secure Systems',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Abhijeet Pachpute | Software • AI • Security',
     description: 'MS CS @ University of Utah. Building production software, shipping applied AI, and caring obsessively about security and reliability.',
+    images: [`${siteUrl}/og-image.png`],
   },
   robots: {
     index: true,
@@ -102,6 +112,7 @@ export default function RootLayout({
       </head>
       <body className="bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 selection:bg-primary-500 selection:text-white antialiased overflow-x-hidden">
         {children}
+        <Analytics />
       </body>
     </html>
   );

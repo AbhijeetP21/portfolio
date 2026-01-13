@@ -16,6 +16,7 @@ export const patents: Patent[] = [
     icon: 'fa-lightbulb',
     iconColor: 'text-yellow-500',
     badgeColor: 'text-yellow-600 dark:text-yellow-500 border-yellow-500/30',
+    link: 'https://iprsearch.ipindia.gov.in/publicsearch',
   },
   {
     type: 'PATENT FILED',
@@ -24,6 +25,7 @@ export const patents: Patent[] = [
     icon: 'fa-lightbulb',
     iconColor: 'text-yellow-500',
     badgeColor: 'text-yellow-600 dark:text-yellow-500 border-yellow-500/30',
+    link: 'https://iprsearch.ipindia.gov.in/publicsearch',
   },
   {
     type: 'IEEE PUBLICATION',
