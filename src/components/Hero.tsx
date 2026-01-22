@@ -18,7 +18,7 @@ export function Hero() {
             className="text-5xl md:text-7xl font-black tracking-tight mb-6 leading-tight animate-fade-in-up"
             style={{ animationDelay: '0.1s' }}
           >
-            Building <span className="text-gradient">Intelligent</span> &amp; <br />
+            Building Intelligent &amp; <br />
             <span className="text-slate-950 dark:text-white">Secure Systems</span>
           </h1>
 

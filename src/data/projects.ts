@@ -19,6 +19,29 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    title: 'Good Bowls',
+    description: 'Full-stack salad bowl restaurant app with React, Node.js, MongoDB, and Stripe payments. Features menu browsing, custom bowl builder, cart management, secure checkout, user authentication, and admin dashboard.',
+    icon: 'fa-bowl-food',
+    iconColor: 'text-emerald-500',
+    borderColor: 'hover:border-emerald-500/50',
+    tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
+    featured: true,
+    images: [
+      '/projects/goodbowls/goodbowls_landing.png',
+      '/projects/goodbowls/home.png',
+      '/projects/goodbowls/good_bowls_login.png',
+      '/projects/goodbowls/buildyourown.png',
+      '/projects/goodbowls/cart.png',
+      '/projects/goodbowls/account.png',
+      '/projects/goodbowls/myorder.png',
+    ],
+    liveUrl: 'https://good-bowls.vercel.app',
+    links: {
+      github: 'https://github.com/AbhijeetP21/Good_Bowls',
+      demo: 'https://good-bowls.vercel.app',
+    },
+  },
+  {
     title: 'Dinodash',
     description: 'Fast-paced, action-packed dinosaur survival game where players dodge obstacles, collect power-ups, and unlock achievements. Built with C++ and Raylib featuring immersive gameplay and pixel-art visuals.',
     icon: 'fa-gamepad',
@@ -72,15 +95,6 @@ export const projects: Project[] = [
     links: {
       paper: true,
     },
-  },
-  {
-    title: 'Enterprise Warranty System',
-    description: 'Scalable backend for product verification and analytics. Optimized async data retrieval and database performance for faster decision workflows.',
-    icon: 'fa-qrcode',
-    iconColor: 'text-blue-500',
-    borderColor: 'hover:border-blue-500/50',
-    tags: ['Spring Boot', 'MySQL', 'REST'],
-    links: {},
   },
   {
     title: 'AI Prompt + RAG Toolkit',
