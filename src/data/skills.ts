@@ -19,16 +19,6 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    title: 'AI / ML',
-    items: [
-      { name: 'PyTorch / TensorFlow', icon: 'fa-brain', iconColor: 'text-accent-500' },
-      { name: 'OpenCV / CNNs', icon: 'fa-eye', iconColor: 'text-accent-500' },
-      { name: 'Gemini APIs / RAG', icon: 'fa-robot', iconColor: 'text-accent-500' },
-      { name: 'Scikit-Learn', icon: 'fa-chart-line', iconColor: 'text-accent-500' },
-      { name: 'Vector embeddings', icon: 'fa-database', iconColor: 'text-accent-500' },
-    ],
-  },
-  {
     title: 'Backend / Cloud',
     items: [
       { name: 'AWS (EC2/S3/Lambda)', icon: 'fa-aws', iconColor: 'text-orange-500' },
@@ -39,7 +29,17 @@ export const skills: SkillCategory[] = [
     ],
   },
   {
-    title: 'Security',
+    title: 'AI / ML',
+    items: [
+      { name: 'PyTorch / TensorFlow', icon: 'fa-brain', iconColor: 'text-accent-500' },
+      { name: 'OpenCV / CNNs', icon: 'fa-eye', iconColor: 'text-accent-500' },
+      { name: 'Gemini APIs / RAG', icon: 'fa-robot', iconColor: 'text-accent-500' },
+      { name: 'Scikit-Learn', icon: 'fa-chart-line', iconColor: 'text-accent-500' },
+      { name: 'Vector embeddings', icon: 'fa-database', iconColor: 'text-accent-500' },
+    ],
+  },
+  {
+    title: 'Enterprise Security',
     items: [
       { name: 'Digital forensics', icon: 'fa-user-secret', iconColor: 'text-red-500' },
       { name: 'Wireshark / Nmap', icon: 'fa-network-wired', iconColor: 'text-red-500' },
