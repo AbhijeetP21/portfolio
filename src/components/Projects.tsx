@@ -122,7 +122,7 @@ export function Projects() {
                 ref={(el) => {
                   cardRefs.current[idx] = el;
                 }}
-                className={`glass-surface rounded-2xl overflow-hidden ${project.borderColor} transition-all duration-300 group tilt-card cursor-target`}
+                className={`glass-surface rounded-2xl ${project.borderColor} transition-all duration-300 group tilt-card cursor-target flex flex-col`}
               >
                 {/* Project Preview: YouTube Embed, Live Preview, or Images */}
                 {project.youtubeUrl ? (
@@ -232,8 +232,8 @@ export function Projects() {
                   </div>
                 ) : null}
 
-                <div className="p-8 h-full flex flex-col">
-                  <div className="flex justify-between items-start mb-6">
+                <div className="p-6 flex flex-col flex-grow">
+                  <div className="flex justify-between items-start mb-4">
                     <div className="bg-slate-100 dark:bg-slate-800 p-3 rounded-lg">
                       <i className={`fa-solid ${project.icon} text-2xl ${project.iconColor}`}></i>
                     </div>
@@ -296,10 +296,10 @@ export function Projects() {
                       )}
                     </div>
                   </div>
-                  <h3 className={`text-xl font-bold mb-3 group-hover:${project.iconColor} transition-colors`}>
+                  <h3 className={`text-xl font-bold mb-2 group-hover:${project.iconColor} transition-colors`}>
                     {project.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-6 flex-grow">{project.description}</p>
+                  <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 flex-grow">{project.description}</p>
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tags.map((tag, tagIdx) => (
                       <span
