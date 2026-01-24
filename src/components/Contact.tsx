@@ -82,11 +82,12 @@ export function Contact() {
                   <i className="fa-brands fa-github text-xl"></i>
                 </a>
                 <a
-                  href="#"
-                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-sky-500 hover:text-white transition-all hover:-translate-y-1 cursor-target"
-                  aria-label="X/Twitter"
+                  href="https://scholar.google.com/citations?user=1aG6rS8AAAAJ&hl=en"
+                  target="_blank"
+                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-[#4285F4] hover:text-white transition-all hover:-translate-y-1 cursor-target"
+                  aria-label="Google Scholar"
                 >
-                  <i className="fa-brands fa-twitter text-xl"></i>
+                  <i className="fa-solid fa-graduation-cap text-xl"></i>
                 </a>
               </div>
             </div>

@@ -89,6 +89,13 @@ export function Hero() {
             >
               <i className="fa-brands fa-github mr-2"></i>GitHub
             </a>
+            <a
+              className="hover:text-primary-500 transition-colors cursor-target"
+              target="_blank"
+              href="https://scholar.google.com/citations?user=1aG6rS8AAAAJ&hl=en"
+            >
+              <i className="fa-solid fa-graduation-cap mr-2"></i>Scholar
+            </a>
           </div>
 
           {/* Tech Stack Strip */}

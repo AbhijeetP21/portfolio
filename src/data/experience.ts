@@ -31,7 +31,7 @@ export const experiences: ExperienceItem[] = [
     bullets: [
       'Shipped a real-time AI SWOT analytics dashboard (React, Node.js, Gemini Flash 2.0, Docker, AWS) processing 50,000+ student records across 10 agencies, cutting analysis time 75%.',
       'Designed a RAG prompt optimization framework for curriculum generation, improving relevance by 40%.',
-      'Built REST APIs with Redis caching and PostgreSQL tuning to keep sub-200ms responses under concurrent workloads.',
+      'Built REST APIs with Redis caching and MySQL tuning to keep sub-200ms responses under concurrent workloads.',
     ],
     color: 'accent',
   },
