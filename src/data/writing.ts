@@ -23,6 +23,17 @@ export const posts: BlogPost[] = [
     status: 'published',
   },
   {
+    slug: 'good-bowls-ecommerce',
+    title: 'Good Bowls: Building a Production-Grade E-Commerce Platform',
+    description: 'A technical exploration of full-stack architecture: three-tier separation, state synchronization, Stripe payment processing, and free-tier deployment strategies.',
+    date: '2026-01-27',
+    readTime: '12 min read',
+    tags: ['React', 'Node.js', 'MongoDB', 'Stripe', 'Redux'],
+    icon: 'fa-cart-shopping',
+    iconColor: 'text-orange-500',
+    status: 'published',
+  },
+  {
     slug: 'how-i-built-tasa',
     title: 'How I Built TASA: Face Authentication for a Virtual Assistant',
     description: 'A deep dive into building a real-time face recognition system with CNN + HOG, anti-spoofing measures, and Raspberry Pi deployment.',
