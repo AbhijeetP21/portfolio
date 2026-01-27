@@ -254,20 +254,20 @@ export default function DinodashArticle() {
                                 </div>
                             </section>
 
-                            {/* Section: Engineering Signal */}
+                            {/* Section: Technical Takeaways */}
                             <section>
                                 <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
-                                    What This Demonstrates
+                                    Technical Takeaways
                                 </h2>
                                 <div>
                                     <div className="grid sm:grid-cols-2 gap-4">
                                         {[
-                                            { icon: 'fa-brain', label: 'Systems thinking' },
-                                            { icon: 'fa-microchip', label: 'Runtime awareness' },
-                                            { icon: 'fa-sitemap', label: 'Architecture discipline' },
-                                            { icon: 'fa-truck-fast', label: 'Portability design' },
-                                            { icon: 'fa-gauge-high', label: 'Performance reasoning' },
-                                            { icon: 'fa-shield-halved', label: 'Correctness under constraint' },
+                                            { icon: 'fa-brain', label: 'System-level separation of concerns' },
+                                            { icon: 'fa-microchip', label: 'Native vs browser runtime constraints' },
+                                            { icon: 'fa-sitemap', label: 'Explicit architecture boundaries' },
+                                            { icon: 'fa-truck-fast', label: 'Engine portability across runtimes' },
+                                            { icon: 'fa-gauge-high', label: 'Performance-aware update loops' },
+                                            { icon: 'fa-shield-halved', label: 'Correctness under constrained execution' },
                                         ].map((item) => (
                                             <div key={item.label} className="flex items-center gap-3 p-3 rounded-lg bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/50">
                                                 <i className={`fa-solid ${item.icon} text-accent-500`}></i>
