@@ -47,7 +47,7 @@ export const projects: Project[] = [
     icon: 'fa-gamepad',
     iconColor: 'text-green-500',
     borderColor: 'hover:border-green-500/50',
-    tags: ['C++', 'Raylib', 'Game Development'],
+    tags: ['C++', 'Raylib', 'WebAssembly', 'Systems Architecture', 'Runtime Portability'],
     featured: true,
     images: [
       '/projects/dinodash/Dinodash_start.png',

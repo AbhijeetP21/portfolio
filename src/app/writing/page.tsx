@@ -113,15 +113,8 @@ export default function WritingPage() {
 
             {/* Posts Grid */}
             <div className="space-y-6">
-              {posts.map((post) => (
-                <article
-                  key={post.slug}
-                  className={`glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 tilt-card ${
-                    post.status === 'coming-soon'
-                      ? 'opacity-75'
-                      : 'hover:border-primary-500/30 cursor-pointer'
-                  }`}
-                >
+              {posts.map((post) => {
+                const articleContent = (
                   <div className="flex items-start gap-4">
                     <div className={`text-3xl ${post.iconColor} shrink-0`}>
                       <i className={`fa-solid ${post.icon}`}></i>
@@ -131,6 +124,11 @@ export default function WritingPage() {
                         {post.status === 'coming-soon' && (
                           <span className="px-2 py-0.5 text-xs font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded">
                             Coming Soon
+                          </span>
+                        )}
+                        {post.status === 'published' && (
+                          <span className="px-2 py-0.5 text-xs font-mono bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 rounded">
+                            Published
                           </span>
                         )}
                         <span className="text-xs text-slate-500 dark:text-slate-500">
@@ -147,16 +145,42 @@ export default function WritingPage() {
                         {post.tags.map((tag) => (
                           <span
                             key={tag}
-                            className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs text-primary-600 dark:text-primary-300 rounded-full"
+                            className="px-3 py-1 bg-slate-100 dark:bg-slate-800/50 text-xs text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700"
                           >
                             {tag}
                           </span>
                         ))}
                       </div>
                     </div>
+                    {post.status === 'published' && (
+                      <div className="hidden sm:flex items-center text-primary-500">
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </div>
+                    )}
                   </div>
-                </article>
-              ))}
+                );
+
+                if (post.status === 'published') {
+                  return (
+                    <Link
+                      key={post.slug}
+                      href={`/writing/${post.slug}`}
+                      className="block glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 tilt-card hover:border-primary-500/30 cursor-pointer"
+                    >
+                      {articleContent}
+                    </Link>
+                  );
+                }
+
+                return (
+                  <article
+                    key={post.slug}
+                    className="glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 tilt-card opacity-75"
+                  >
+                    {articleContent}
+                  </article>
+                );
+              })}
             </div>
 
             {/* Call to Action */}

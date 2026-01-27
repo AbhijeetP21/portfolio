@@ -12,6 +12,17 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: 'dinodash-web-runtime',
+    title: 'Dinodash: Engineering a Native C++ Game Engine for the Web Runtime',
+    description: 'A deep dive into building a multi-runtime system: native C++ game engine with WebAssembly adaptation, browser deployment, and runtime portability design.',
+    date: '2026-01-26',
+    readTime: '6 min read',
+    tags: ['C++', 'WebAssembly', 'Systems Architecture', 'Raylib'],
+    icon: 'fa-gamepad',
+    iconColor: 'text-green-500',
+    status: 'published',
+  },
+  {
     slug: 'how-i-built-tasa',
     title: 'How I Built TASA: Face Authentication for a Virtual Assistant',
     description: 'A deep dive into building a real-time face recognition system with CNN + HOG, anti-spoofing measures, and Raspberry Pi deployment.',

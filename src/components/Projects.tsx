@@ -10,7 +10,7 @@ function getYouTubeVideoId(url: string): string | null {
     /(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([^&\n?#]+)/,
     /youtube\.com\/watch\?.*v=([^&\n?#]+)/,
   ];
-  
+
   for (const pattern of patterns) {
     const match = url.match(pattern);
     if (match && match[1]) {
@@ -304,7 +304,7 @@ export function Projects() {
                     {project.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-xs text-primary-600 dark:text-primary-300 rounded-full"
+                        className="px-3 py-1 bg-slate-100 dark:bg-slate-800/50 text-xs text-slate-600 dark:text-slate-300 rounded-full border border-slate-200 dark:border-slate-700"
                       >
                         {tag}
                       </span>
