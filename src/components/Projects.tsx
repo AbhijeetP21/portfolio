@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useRef, useEffect } from 'react';
+import Link from 'next/link';
 import { projects } from '@/data/projects';
 import { Lightbox } from './Lightbox';
 
@@ -238,6 +239,16 @@ export function Projects() {
                       <i className={`fa-solid ${project.icon} text-2xl ${project.iconColor}`}></i>
                     </div>
                     <div className="flex items-center gap-3">
+                      {project.links?.writeup && (
+                        <Link
+                          href={project.links.writeup}
+                          className="text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
+                          title="Read Technical Writeup"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <i className="fa-solid fa-book-open text-lg"></i>
+                        </Link>
+                      )}
                       {project.links?.patent && (
                         <a
                           href="#"

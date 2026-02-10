@@ -14,6 +14,7 @@ export interface Project {
     demo?: string;
     patent?: boolean;
     paper?: boolean;
+    writeup?: string;
   };
 }
 
@@ -75,14 +76,14 @@ export const projects: Project[] = [
   },
   {
     title: 'TASA',
-    description: 'Trusted Assistant with Secure Access. Real-time face recognition with CNN + HOG, anti-spoofing, and Raspberry Pi deployment. ~90% authentication accuracy.',
+    description: 'Legacy Project. Trusted Assistant with Secure Access. Built hierarchical access control and real-time face recognition (CNN + HOG) for a privacy-aware virtual assistant. Published at IEEE ICCUBEA 2023.',
     icon: 'fa-fingerprint',
     iconColor: 'text-primary-500',
     borderColor: 'hover:border-primary-500/50',
-    tags: ['Python', 'OpenCV', 'TensorFlow'],
+    tags: ['Python', 'OpenCV', 'TensorFlow', 'IEEE ICCUBEA'],
     links: {
-      github: 'https://github.com/AbhijeetP21',
       patent: true,
+      writeup: '/writing/how-i-built-tasa',
     },
   },
   {
@@ -98,11 +99,13 @@ export const projects: Project[] = [
   },
   {
     title: 'AI Prompt + RAG Toolkit',
-    description: 'Prompt optimization and retrieval setup used for curriculum generation and analytics workflows (embeddings, retrieval, evaluation loops).',
+    description: 'Built a data analytics dashboard with natural language query capabilities using lightweight RAG. Combines client-side CSV processing with Gemini API for actionable insights on complex datasets.',
     icon: 'fa-robot',
     iconColor: 'text-purple-500',
     borderColor: 'hover:border-purple-500/50',
-    tags: ['RAG', 'Embeddings', 'Evaluation'],
-    links: {},
+    tags: ['RAG', 'Gemini API', 'Analytics'],
+    links: {
+      writeup: '/writing/rag-optimization-techniques',
+    },
   },
 ];
