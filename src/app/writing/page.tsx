@@ -1,3 +1,10 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Writing | Abhijeet Pachpute',
+  description: 'Technical deep-dives, lessons learned, and thoughts on building software.',
+};
+
 'use client';
 
 import { useEffect } from 'react';

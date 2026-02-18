@@ -1,3 +1,11 @@
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'How I Built TASA: Face Authentication for a Virtual Assistant | Abhijeet Pachpute',
+  description: 'Implementing hierarchical access control and real-time face recognition for privacy-aware voice assistants using Python, TensorFlow, and OpenCV.',
+  keywords: ['TASA', 'face recognition', 'biometric security', 'Python', 'TensorFlow', 'OpenCV', 'CNN', 'HOG', 'Raspberry Pi'],
+};
+
 'use client';
 
 import Link from 'next/link';
