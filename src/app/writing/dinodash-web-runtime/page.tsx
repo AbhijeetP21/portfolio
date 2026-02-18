@@ -1,11 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Dinodash: From Native C++ Game Engine to Web | Abhijeet Pachpute',
-  description: 'How I built a multi-runtime system that compiles a native game engine to WebAssembly and runs in the browser using C++, Raylib, and WebAssembly.',
-  keywords: ['Dinodash', 'WebAssembly', 'C++', 'Raylib', 'game engine', 'systems design'],
-};
-
 'use client';
 
 import Link from 'next/link';

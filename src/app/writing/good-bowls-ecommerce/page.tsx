@@ -1,11 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Good Bowls: Building a Production-Grade E-Commerce Platform | Abhijeet Pachpute',
-  description: 'Engineering a scalable food ordering system with three-tier architecture, secure payment processing, and modern state management using React, Redux, Node.js, and MongoDB.',
-  keywords: ['Good Bowls', 'e-commerce', 'React', 'Redux', 'Node.js', 'MongoDB', 'Stripe', 'full-stack'],
-};
-
 'use client';
 
 import Link from 'next/link';

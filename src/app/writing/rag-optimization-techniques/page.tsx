@@ -1,11 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'RAG Optimization Techniques for Production AI | Abhijeet Pachpute',
-  description: 'How a data analytics dashboard evolved into a natural language query system for complex datasets using retrieval-augmented generation.',
-  keywords: ['RAG', 'AI', 'Gemini API', 'data analytics', 'natural language', 'CSV processing'],
-};
-
 'use client';
 
 import Link from 'next/link';

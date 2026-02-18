@@ -1,10 +1,3 @@
-import type { Metadata } from 'next';
-
-export const metadata: Metadata = {
-  title: 'Abhijeet Pachpute | Software Engineer | AI & Security',
-  description: 'Portfolio of Abhijeet Pachpute — MS CS @ University of Utah. Software engineering, AI/ML, and cybersecurity.',
-};
-
 'use client';
 
 import { Navbar } from '@/components/Navbar';
