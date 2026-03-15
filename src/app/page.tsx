@@ -91,10 +91,10 @@ export default function Home() {
   // Set up cursor hover affordance
   useEffect(() => {
     const setHover = (on: boolean) => document.body.classList.toggle('cursor-hover', on);
-    
+
     const handleMouseEnter = () => setHover(true);
     const handleMouseLeave = () => setHover(false);
-    
+
     const elements = document.querySelectorAll('a, button, .cursor-target');
     elements.forEach((el) => {
       el.addEventListener('mouseenter', handleMouseEnter);
@@ -120,13 +120,13 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-      <About />
-      <Education />
-      <Experience />
-      <Projects />
-      <Patents />
-      <Skills />
-      <Contact />
+        <About />
+        <Education />
+        <Experience />
+        <Projects />
+        <Patents />
+        <Skills />
+        <Contact />
       </main>
       <Toast />
       <footer className="py-8 border-t border-slate-200 dark:border-slate-800 text-center text-slate-500 text-sm">

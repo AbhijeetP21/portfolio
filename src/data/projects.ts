@@ -40,6 +40,7 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/AbhijeetP21/Good_Bowls',
       demo: 'https://good-bowls.vercel.app',
+      writeup: '/writing/good-bowls-ecommerce',
     },
   },
   {
@@ -60,6 +61,21 @@ export const projects: Project[] = [
     links: {
       github: 'https://github.com/AbhijeetP21/Dinodash',
       demo: 'https://abhijeetp21.github.io/Dinodash-play/',
+      writeup: '/writing/dinodash-web-runtime',
+    },
+  },
+  {
+    title: 'Multi-Agent Data Wrangler',
+    description: 'An auditable, configurable, and composable data transformation system modeled as a graph problem. Features distinct agents for profiling, candidate generation, validation, scoring, and ranking, with robust failure recovery.',
+    icon: 'fa-network-wired',
+    iconColor: 'text-indigo-500',
+    borderColor: 'hover:border-indigo-500/50',
+    tags: ['Python', 'Streamlit', 'Pydantic', 'Data Engineering'],
+    images: ['/projects/multi-agent-data-wrangler/demo.png'],
+    links: {
+      github: 'https://github.com/AbhijeetP21/multi-agent-data-wrangler',
+      demo: 'https://multi-agent-data-wrangler.streamlit.app/',
+      writeup: '/writing/multi-agent-data-wrangler',
     },
   },
   {
@@ -84,17 +100,6 @@ export const projects: Project[] = [
     links: {
       patent: true,
       writeup: '/writing/how-i-built-tasa',
-    },
-  },
-  {
-    title: 'Image-Dev (GenAI)',
-    description: 'Text-to-image system combining TF-IDF + diffusion. Generates high-res 1024×1024 images with strong contextual relevance (~93%).',
-    icon: 'fa-wand-magic-sparkles',
-    iconColor: 'text-accent-500',
-    borderColor: 'hover:border-accent-500/50',
-    tags: ['Diffusion', 'AWS', 'PyTorch'],
-    links: {
-      paper: true,
     },
   },
   {
