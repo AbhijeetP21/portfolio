@@ -60,7 +60,7 @@ export function Education() {
           <div className="glass-surface rounded-2xl p-8 tilt-card">
             <div className="flex items-start justify-between gap-6">
               <div>
-                <h3 className="text-xl font-bold text-slate-950 dark:text-white">University of Pune</h3>
+                <h3 className="text-xl font-bold text-slate-950 dark:text-white">Savitribai Phule Pune University</h3>
                 <p className="text-slate-600 dark:text-slate-400 mt-1">Bachelor of Engineering in Computer Engineering</p>
                 <p className="text-sm text-slate-500 dark:text-slate-400 font-mono mt-2">Jul 2019 – May 2023 • Pune, India</p>
               </div>

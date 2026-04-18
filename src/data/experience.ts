@@ -52,7 +52,7 @@ export const experiences: ExperienceItem[] = [
     date: 'May 2022 – Jul 2023',
     location: 'Pune, India',
     title: 'Research Assistant',
-    company: 'Research & Innovation Cell • RMD Sinhgad (University of Pune)',
+    company: 'Research & Innovation Cell • RMD Sinhgad (Savitribai Phule Pune University)',
     description: '',
     bullets: [
       'Supported research methodology design through literature reviews and synthesis.',

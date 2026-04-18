@@ -44,18 +44,6 @@ export function Contact() {
 
               <div className="flex items-start gap-4">
                 <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center text-accent-500 shrink-0">
-                  <i className="fa-solid fa-phone text-xl"></i>
-                </div>
-                <div>
-                  <h4 className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Phone</h4>
-                  <a href="tel:+18019497940" className="text-lg hover:text-accent-500 transition-colors cursor-target">
-                    (801) 949-7940
-                  </a>
-                </div>
-              </div>
-
-              <div className="flex items-start gap-4">
-                <div className="w-12 h-12 rounded-full bg-accent-500/10 flex items-center justify-center text-accent-500 shrink-0">
                   <i className="fa-solid fa-location-dot text-xl"></i>
                 </div>
                 <div>
