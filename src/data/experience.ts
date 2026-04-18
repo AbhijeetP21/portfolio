@@ -12,13 +12,14 @@ export const experiences: ExperienceItem[] = [
   {
     date: 'Jun 2025 – Present',
     location: 'Salt Lake City, UT',
-    title: 'Information Technology Intern',
+    title: 'IT Systems & Security Intern',
     company: 'University of Utah • VP for Research',
     description: 'Securing research infrastructure for a $650M+ annual research enterprise.',
     bullets: [
-      'Deployed Tanium, BeyondTrust Privilege Management, and Forcepoint endpoint security, reducing risk by 60% and supporting federal research compliance.',
-      'Remediated critical CSRF exposure across 25+ Windows servers through cross-department coordination.',
-      'Co-authored SOPs for international loaner laptops and onboarded 70+ encrypted devices end-to-end.',
+      'Engineered and automated endpoint management and security workflows using Python and enterprise tools (Microsoft Intune, Tanium, BeyondTrust), improving compliance by 60% across a $650M+ research infrastructure.',
+      'Built and optimized scalable device provisioning pipelines (OS imaging, configuration, full-disk encryption), onboarding 70+ endpoints with consistent, policy-compliant deployments.',
+      'Diagnosed and resolved system-level, identity, and network issues (Windows, macOS, TCP/IP, Active Directory, Entra ID), applying root-cause analysis to improve reliability and reduce recurring incidents.',
+      'Collaborated across IT and research teams to support distributed systems infrastructure, balancing security, performance, and usability in production environments.',
     ],
     color: 'primary',
   },
