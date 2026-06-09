@@ -12,6 +12,17 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: 'autonomous-web-agent',
+    title: 'Autonomous Web Agent: What Makes It Reliable Is Not the Prompt',
+    description: 'Building a form-filling agent that actually works: perception pipelines, structured error recovery, and the engineering that surrounds the LLM.',
+    date: '2026-06-09',
+    readTime: '9 min read',
+    tags: ['Python', 'Playwright', 'LLM', 'Agentic AI', 'Automation'],
+    icon: 'fa-spider',
+    iconColor: 'text-violet-500',
+    status: 'published',
+  },
+  {
     slug: 'clipsync',
     title: 'ClipSync: Building a Secure, Real-Time Clipboard Manager Without a Custom Backend',
     description: 'How I built a secure, serverless real-time clipboard manager using Next.js and Supabase, leveraging Postgres Row Level Security (RLS) for data isolation.',
