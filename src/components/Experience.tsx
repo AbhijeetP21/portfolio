@@ -8,6 +8,7 @@ const colorMap: Record<string, string> = {
   blue: 'bg-blue-500',
   slate: 'bg-slate-500',
   red: 'bg-red-500',
+  cyan: 'bg-cyan-500',
 };
 
 const hoverRingMap: Record<string, string> = {
@@ -16,6 +17,7 @@ const hoverRingMap: Record<string, string> = {
   blue: 'group-hover:ring-blue-500/20',
   slate: 'group-hover:ring-slate-500/20',
   red: 'group-hover:ring-red-500/20',
+  cyan: 'group-hover:ring-cyan-500/20',
 };
 
 const titleColorMap: Record<string, string> = {
@@ -24,6 +26,7 @@ const titleColorMap: Record<string, string> = {
   blue: 'text-blue-500',
   slate: 'text-slate-700 dark:text-slate-200',
   red: 'text-red-500',
+  cyan: 'text-cyan-500',
 };
 
 export function Experience() {
