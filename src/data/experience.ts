@@ -10,7 +10,23 @@ export interface ExperienceItem {
 
 export const experiences: ExperienceItem[] = [
   {
-    date: 'Jun 2025 – Present',
+    date: 'Jul 2025 – Present',
+    location: 'Salt Lake City, UT',
+    title: 'AI Engineer',
+    company: 'Paxel AI',
+    description: 'Pharma sales intelligence startup. Building the governed AI assistant that lets field sales reps ask plain-English questions of their own sales data.',
+    bullets: [
+      'Built an intelligence catalog over a multi-million-row pharmaceutical sales dataset in Aurora PostgreSQL, mapping 8 business domains (sales, accounts, contracts, products, GPOs, wholesalers, comp plans, contacts) into one curated, cited knowledge layer: numbered rules per domain, each traced to a data-dictionary section or application source line, validated and compiled by an offline build into a ~60K-token, provider-agnostic doc any service can build AI-native features on without re-modeling the data.',
+      'Built the production AI assistant on that layer: a tool-calling agent that turns plain-English rep questions into SQL over their tenant\'s governed data, with service-side entity resolution (8 entity kinds, 5 matching tiers from exact to gated trigram) that binds names as parameters instead of SQL literals.',
+      'Designed the service for AWS ECS Fargate (dynamic task allocation) with Aurora behind RDS Proxy, streaming answers to the rep over Server-Sent Events as the model generates them; the full catalog ships in every prompt, reaching a 98.6% prompt-cache hit rate.',
+      'Designed the governed data layer: 17 Postgres views that enforce tenant and per-rep row scoping (rep, director, admin) inside the database and fail closed when session context is missing; the agent\'s database role can read those views and nothing else, with no base-table and no write grant anywhere.',
+      'Built the SQL safety gate with Postgres\'s own parser (pglast): only a single SELECT over allowlisted views and functions, bound parameters, an EXPLAIN cost gate, a read-only transaction with a statement timeout, and a post-execution check that discards results if a query tampered with the session\'s scoping settings.',
+      'Built the eval harness (80 golden questions, 240 paraphrases, multi-turn journeys and an unseen question set) that grades answers value by value against a recorded baseline: about 90% accuracy across 270 graded turns (answers with no silently wrong number) at a ~5s median response, backed by 890+ offline tests.',
+    ],
+    color: 'cyan',
+  },
+  {
+    date: 'Jun 2025 – May 2026',
     location: 'Salt Lake City, UT',
     title: 'IT Systems & Security Intern',
     company: 'University of Utah • VP for Research',
@@ -18,21 +34,22 @@ export const experiences: ExperienceItem[] = [
     bullets: [
       'Engineered and automated endpoint management and security workflows using Python and enterprise tools (Microsoft Intune, Tanium, BeyondTrust), improving compliance by 60% across a $650M+ research infrastructure.',
       'Built and optimized scalable device provisioning pipelines (OS imaging, configuration, full-disk encryption), onboarding 70+ endpoints with consistent, policy-compliant deployments.',
-      'Diagnosed and resolved system-level, identity, and network issues (Windows, macOS, TCP/IP, Active Directory, Entra ID), applying root-cause analysis to improve reliability and reduce recurring incidents.',
+      'Diagnosed and resolved system-level, identity, and network issues (Linux, Windows, macOS, TCP/IP, Active Directory, Entra ID), applying root-cause analysis to improve reliability and reduce recurring incidents.',
       'Collaborated across IT and research teams to support distributed systems infrastructure, balancing security, performance, and usability in production environments.',
     ],
     color: 'primary',
   },
   {
     date: 'May 2025 – Aug 2025',
-    location: 'Remote, USA',
+    location: 'Logan, UT (Remote)',
     title: 'AI Software Engineer (Summer\'25 Intern)',
     company: 'AVI Human Services',
     description: 'Built applied GenAI tools used by state administrators.',
     bullets: [
       'Shipped a real-time AI SWOT analytics dashboard (React, Node.js, Gemini Flash 2.0, Docker, AWS) processing 50,000+ student records across 10 agencies, cutting analysis time 75%.',
-      'Designed a RAG prompt optimization framework for curriculum generation, improving relevance by 40%.',
-      'Built REST APIs with Redis caching and MySQL tuning to keep sub-200ms responses under concurrent workloads.',
+      'Designed a LangChain pipeline with the Gemini API and vector embeddings for automated curriculum content generation, with a RAG prompt optimization framework that improved relevance by 40%.',
+      'Built fault-tolerant REST APIs with Redis caching and tuned MySQL indexes, holding median response times under 200ms under concurrent load.',
+      'Added automated alerting and graceful degradation so queries stayed available during partial failures, shipping in an iterative delivery cycle.',
     ],
     color: 'accent',
   },
@@ -43,8 +60,8 @@ export const experiences: ExperienceItem[] = [
     company: 'eWarranty Solutions',
     description: '',
     bullets: [
-      'Built a QR code warranty verification system (Java, Spring Boot, REST), supporting 45,000+ products and reducing manual errors by 30%.',
-      'Implemented real-time analytics with async data retrieval (CompletableFuture) and MySQL-backed dashboards.',
+      'Built a QR code warranty verification system (Java, Kotlin, Spring Boot, RESTful APIs), supporting 45,000+ products and reducing manual errors by 30%.',
+      'Modeled the analytics pipeline as an async computation graph with Java CompletableFuture chains and a read-optimized MySQL schema, decoupling query latency from write throughput and powering real-time dashboards.',
       'Improved performance via query + architecture tuning and HikariCP pooling, reducing response time 40%.',
     ],
     color: 'blue',
