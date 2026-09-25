@@ -83,6 +83,13 @@ export default function GovernedSqlAgentArticle() {
                                 <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
                                     This is a write-up of the engineering behind the AI assistant I build at work, inside a pharma sales intelligence SaaS product. I&apos;ve kept it at the level of architecture and lessons. Customer data, table names, and business rules are left out or changed, and the code snippets are simplified illustrations rather than the production source.
                                 </p>
+
+                                <div className="mt-6 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/20">
+                                    <p className="text-sm text-slate-700 dark:text-slate-300">
+                                        <i className="fa-solid fa-seedling mr-2 text-emerald-500"></i>
+                                        <strong>A living write-up:</strong> this system is still being built, and the numbers in it move with every eval run. I&apos;ll keep updating this article as it grows and as I learn new lessons from it. What changed and when is logged in the <a href="#updates" className="text-emerald-600 dark:text-emerald-400 underline underline-offset-2 hover:opacity-80">updates</a> at the end.
+                                    </p>
+                                </div>
                             </section>
 
                             {/* Section: Why RAG Was the Wrong Tool */}
@@ -492,6 +499,27 @@ ROLLBACK;`}</pre>
                                         <div key={item.title} className="p-6 rounded-xl bg-slate-50 dark:bg-slate-800/30 border border-slate-200 dark:border-slate-700/50">
                                             <h4 className="font-semibold text-slate-900 dark:text-white text-base mb-2">{item.title}</h4>
                                             <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </section>
+
+                            {/* Section: Updates */}
+                            <section id="updates" className="scroll-mt-28">
+                                <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+                                    Updates
+                                </h2>
+                                <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                                    New lessons, numbers and design changes get added here as the system evolves.
+                                </p>
+                                <div className="space-y-4">
+                                    {[
+                                        { date: 'September 2026', title: 'First version', desc: 'The architecture as it stands: governed views, the SQL guard, the whole-catalog prompt, the rules audit, and the eval harness, with results from the latest graded battery.' },
+                                    ].map((entry) => (
+                                        <div key={entry.date + entry.title} className="border-l-4 border-emerald-500 pl-6 space-y-1">
+                                            <div className="text-sm font-mono text-slate-500 dark:text-slate-400">{entry.date}</div>
+                                            <h3 className="font-bold text-slate-900 dark:text-white">{entry.title}</h3>
+                                            <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm">{entry.desc}</p>
                                         </div>
                                     ))}
                                 </div>
