@@ -12,6 +12,17 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: 'governed-sql-agent',
+    title: 'Letting an LLM Query Enterprise Data Without Trusting It',
+    description: 'Why RAG breaks down on millions of rows, and how governed Postgres views, a parse-gated SQL guard, and a cited knowledge catalog let a model answer in plain English without ever holding the keys.',
+    date: '2026-09-25',
+    readTime: '12 min read',
+    tags: ['PostgreSQL', 'LLM Agents', 'Text-to-SQL', 'Security', 'AWS'],
+    icon: 'fa-database',
+    iconColor: 'text-emerald-500',
+    status: 'published',
+  },
+  {
     slug: 'autonomous-web-agent',
     title: 'Autonomous Web Agent: What Makes It Reliable Is Not the Prompt',
     description: 'Building a form-filling agent that actually works: perception pipelines, structured error recovery, and the engineering that surrounds the LLM.',
