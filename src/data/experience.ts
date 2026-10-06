@@ -10,7 +10,7 @@ export interface ExperienceItem {
 
 export const experiences: ExperienceItem[] = [
   {
-    date: 'Jul 2025 – Present',
+    date: 'Jul 2026 – Present',
     location: 'Salt Lake City, UT',
     title: 'AI Engineer',
     company: 'Paxel AI',
