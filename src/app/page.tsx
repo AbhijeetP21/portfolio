@@ -10,6 +10,7 @@ import { Experience } from '@/components/Experience';
 import { Projects } from '@/components/Projects';
 import { Patents } from '@/components/Patents';
 import { Skills } from '@/components/Skills';
+import { Principles } from '@/components/Principles';
 import { Contact } from '@/components/Contact';
 import { Toast } from '@/components/Toast';
 import { ToastProvider } from '@/contexts/ToastContext';
@@ -126,6 +127,7 @@ export default function Home() {
         <Projects />
         <Patents />
         <Skills />
+        <Principles />
         <Contact />
       </main>
       <Toast />
