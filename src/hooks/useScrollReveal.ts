@@ -19,7 +19,7 @@ export function useScrollReveal() {
       { threshold: 0.12 }
     );
 
-    const elements = document.querySelectorAll('section h2, .tilt-card');
+    const elements = document.querySelectorAll('section h2, .content-card');
     elements.forEach((el) => {
       el.classList.add('opacity-0');
       (el as HTMLElement).style.animationFillMode = 'forwards';

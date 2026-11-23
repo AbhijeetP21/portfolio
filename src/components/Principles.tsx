@@ -14,7 +14,7 @@ export function Principles() {
         </div>
 
         <div className="max-w-3xl mx-auto">
-          <ul className="glass-surface rounded-2xl px-8 md:px-10 py-2 divide-y divide-slate-200 dark:divide-slate-700 text-slate-700 dark:text-slate-300 leading-relaxed tilt-card">
+          <ul className="glass-surface rounded-2xl px-8 md:px-10 py-2 divide-y divide-slate-200 dark:divide-slate-700 text-slate-700 dark:text-slate-300 leading-relaxed content-card">
             {principles.map((line, idx) => (
               <li key={idx} className="py-4">
                 {line}

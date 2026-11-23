@@ -16,7 +16,7 @@ export function Contact() {
   return (
     <section id="contact" className="py-16 relative overflow-hidden">
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-4xl mx-auto glass-surface rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-slate-700 tilt-card">
+        <div className="max-w-4xl mx-auto glass-surface rounded-3xl p-8 md:p-12 border border-slate-200 dark:border-slate-700 content-card">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold mb-4">Let&apos;s build something that works at scale.</h2>
             <p className="text-slate-600 dark:text-slate-400">
@@ -35,7 +35,7 @@ export function Contact() {
                   <h4 className="text-sm text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Email</h4>
                   <a
                     href="mailto:abhijeetsp21@gmail.com"
-                    className="text-lg hover:text-accent-500 transition-colors break-all cursor-target"
+                    className="text-lg hover:text-accent-500 transition-colors break-all"
                   >
                     abhijeetsp21@gmail.com
                   </a>
@@ -56,7 +56,7 @@ export function Contact() {
                 <a
                   href="https://linkedin.com/in/abhijeet-pachpute/"
                   target="_blank"
-                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-[#0077b5] hover:text-white transition-all hover:-translate-y-1 cursor-target"
+                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-[#0077b5] hover:text-white transition-all hover:-translate-y-1"
                   aria-label="LinkedIn"
                 >
                   <i className="fa-brands fa-linkedin-in text-xl"></i>
@@ -64,7 +64,7 @@ export function Contact() {
                 <a
                   href="https://github.com/AbhijeetP21"
                   target="_blank"
-                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-700 hover:text-white transition-all hover:-translate-y-1 cursor-target"
+                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-slate-700 hover:text-white transition-all hover:-translate-y-1"
                   aria-label="GitHub"
                 >
                   <i className="fa-brands fa-github text-xl"></i>
@@ -72,7 +72,7 @@ export function Contact() {
                 <a
                   href="https://scholar.google.com/citations?user=1aG6rS8AAAAJ&hl=en"
                   target="_blank"
-                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-[#4285F4] hover:text-white transition-all hover:-translate-y-1 cursor-target"
+                  className="w-12 h-12 rounded-full bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-slate-900 dark:text-white hover:bg-[#4285F4] hover:text-white transition-all hover:-translate-y-1"
                   aria-label="Google Scholar"
                 >
                   <i className="fa-solid fa-graduation-cap text-xl"></i>
@@ -87,13 +87,13 @@ export function Contact() {
               <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">I usually respond within 24 hours.</p>
               <a
                 href="mailto:abhijeetsp21@gmail.com"
-                className="inline-block w-full py-3 bg-accent-500 hover:bg-accent-400 text-white font-bold rounded-xl transition-colors cursor-target"
+                className="inline-block w-full py-3 bg-accent-500 hover:bg-accent-400 text-white font-bold rounded-xl transition-colors"
               >
                 Launch Email App
               </a>
               <button
                 onClick={copyEmail}
-                className="mt-4 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline decoration-dotted cursor-target"
+                className="mt-4 text-sm text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white underline decoration-dotted"
               >
                 Or copy email to clipboard
               </button>

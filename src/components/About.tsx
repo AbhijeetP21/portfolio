@@ -9,7 +9,7 @@ export function About() {
             <span className="text-primary-500">/</span> About Me
           </h2>
 
-          <div className="glass-surface rounded-2xl p-8 md:p-10 space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed tilt-card">
+          <div className="glass-surface rounded-2xl p-8 md:p-10 space-y-6 text-slate-700 dark:text-slate-300 leading-relaxed content-card">
             <p>
               I&apos;m an AI engineer at Paxel AI, a pharma sales intelligence startup, where I build the governed AI
               assistant that lets field sales reps ask plain-English questions of their own sales data. I care about

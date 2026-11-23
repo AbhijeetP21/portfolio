@@ -3,13 +3,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { BackgroundEffects } from '@/components/BackgroundEffects';
-import { CustomCursor } from '@/components/CustomCursor';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function AutonomousWebAgentArticle() {
     return (
         <>
-            <CustomCursor />
             <BackgroundEffects />
 
             {/* Navigation */}

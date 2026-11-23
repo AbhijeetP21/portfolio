@@ -2,13 +2,11 @@
 
 import Link from 'next/link';
 import { BackgroundEffects } from '@/components/BackgroundEffects';
-import { CustomCursor } from '@/components/CustomCursor';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function DinodashArticle() {
     return (
         <>
-            <CustomCursor />
             <BackgroundEffects />
 
             {/* Navigation */}

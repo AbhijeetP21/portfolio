@@ -9,21 +9,12 @@
   --scroll-track: #f1f5f9;
   --scroll-thumb: #cbd5e1;
   --scroll-thumb-hover: #94a3b8;
-
-  --cursor-ring: rgba(99, 102, 241, 0.25);
-  --cursor-dot: rgba(16, 185, 129, 0.95);
-
-  --flashlight: rgba(99, 102, 241, 0.10);
-  --flashlight-size: 260px;
-  --flashlight-blend: multiply;
 }
 
 .dark {
   --scroll-track: #0f172a;
   --scroll-thumb: #334155;
   --scroll-thumb-hover: #475569;
-  --flashlight: rgba(255, 255, 255, 0.11);
-  --flashlight-blend: screen;
 }
 
 /* Custom Scrollbar */
@@ -71,105 +62,17 @@
   }
 }
 
-/* Floating card with 3D tilt effect */
-.tilt-card {
-  /* Enable 3D transforms */
-  transform-style: preserve-3d;
-  /* Don't add transform here - let JS control it */
-}
-
-.tilt-card:hover {
+/* Card hover feedback */
+.content-card:hover {
   border-color: rgba(16, 185, 129, 0.30);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25),
               0 0 0 1px rgba(16, 185, 129, 0.1);
 }
 
-.dark .tilt-card:hover {
+.dark .content-card:hover {
   border-color: rgba(16, 185, 129, 0.22);
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5),
               0 0 0 1px rgba(16, 185, 129, 0.15);
-}
-
-/* Smooth cursor */
-#cursorRing,
-#cursorDot {
-  position: fixed;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-}
-
-#cursorRing {
-  width: 44px;
-  height: 44px;
-  border-radius: 9999px;
-  border: 1px solid var(--cursor-ring);
-  box-shadow: 0 0 0 10px rgba(99, 102, 241, 0.06);
-  transition: width 160ms ease, height 160ms ease, box-shadow 160ms ease, opacity 200ms ease;
-  opacity: 0;
-  background: transparent;
-}
-
-#cursorDot {
-  width: 8px;
-  height: 8px;
-  border-radius: 9999px;
-  background: var(--cursor-dot);
-  box-shadow: 0 0 14px rgba(16, 185, 129, 0.25);
-  transition: transform 160ms ease, opacity 200ms ease;
-  opacity: 0;
-}
-
-.cursor-hover #cursorRing {
-  width: 58px;
-  height: 58px;
-  box-shadow: 0 0 0 14px rgba(99, 102, 241, 0.07);
-}
-
-.cursor-click #cursorDot {
-  transform: translate(-50%, -50%) scale(0.7);
-}
-
-@media (pointer: coarse) {
-  #cursorRing,
-  #cursorDot {
-    display: none;
-  }
-  #flashlight {
-    display: none;
-  }
-}
-
-/* Flashlight overlay (subtle spotlight) */
-#flashlight {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 5;
-  opacity: 0;
-  transition: opacity 240ms ease;
-  mix-blend-mode: var(--flashlight-blend);
-  background: radial-gradient(
-    circle var(--flashlight-size) at var(--mx, 50vw) var(--my, 50vh),
-    var(--flashlight),
-    transparent 60%
-  );
-}
-
-body.has-mouse #flashlight {
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #flashlight {
-    transition: none;
-  }
-  #cursorRing,
-  #cursorDot {
-    transition: none;
-  }
 }
 
 /* Animations */
@@ -317,7 +220,7 @@ select:focus-visible,
 
 /* Focus styles for cards and glass surfaces */
 .glass-surface:focus-visible,
-.tilt-card:focus-visible {
+.content-card:focus-visible {
   outline: 2px solid #10b981;
   outline-offset: 2px;
 }
