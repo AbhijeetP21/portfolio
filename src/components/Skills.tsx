@@ -12,7 +12,7 @@ export function Skills() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {skills.map((category, idx) => (
-            <div key={idx} className="glass-surface rounded-2xl p-7 tilt-card">
+            <div key={idx} className="glass-surface rounded-2xl p-7 content-card">
               <h3 className="text-lg font-bold text-slate-950 dark:text-white border-b border-slate-200 dark:border-slate-700 pb-2 mb-4">
                 {category.title}
               </h3>

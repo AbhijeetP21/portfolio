@@ -110,7 +110,7 @@ export function Projects() {
             <a
               href="https://github.com/AbhijeetP21"
               target="_blank"
-              className="text-primary-600 dark:text-primary-400 hover:opacity-90 font-mono text-sm mt-4 md:mt-0 cursor-target"
+              className="text-primary-600 dark:text-primary-400 hover:opacity-90 font-mono text-sm mt-4 md:mt-0"
             >
               View all on GitHub <i className="fa-solid fa-arrow-right ml-1"></i>
             </a>
@@ -123,7 +123,7 @@ export function Projects() {
                 ref={(el) => {
                   cardRefs.current[idx] = el;
                 }}
-                className={`glass-surface rounded-2xl ${project.borderColor} transition-all duration-300 group tilt-card cursor-target flex flex-col`}
+                className={`glass-surface rounded-2xl ${project.borderColor} transition-all duration-300 group content-card flex flex-col`}
               >
                 {/* Project Preview: YouTube Embed, Live Preview, or Images */}
                 {project.youtubeUrl ? (

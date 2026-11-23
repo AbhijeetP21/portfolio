@@ -41,12 +41,12 @@ export function Patents() {
                 href={patent.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="glass-surface p-6 rounded-xl flex items-start gap-4 tilt-card cursor-target"
+                className="glass-surface p-6 rounded-xl flex items-start gap-4 content-card"
               >
                 {content}
               </a>
             ) : (
-              <div key={idx} className="glass-surface p-6 rounded-xl flex items-start gap-4 tilt-card cursor-target">
+              <div key={idx} className="glass-surface p-6 rounded-xl flex items-start gap-4 content-card">
                 {content}
               </div>
             );
@@ -61,7 +61,7 @@ export function Patents() {
           </div>
           <div className="grid md:grid-cols-2 gap-4">
             {awards.map((award, idx) => (
-              <div key={idx} className="glass-surface p-6 rounded-xl tilt-card">
+              <div key={idx} className="glass-surface p-6 rounded-xl content-card">
                 <div className="flex items-start gap-4">
                   <div className="text-2xl text-yellow-500">
                     <i className={`fa-solid ${award.icon}`}></i>

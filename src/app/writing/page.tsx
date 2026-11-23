@@ -1,76 +1,13 @@
 'use client';
 
-import { useEffect } from 'react';
 import Link from 'next/link';
 import { posts } from '@/data/writing';
 import { BackgroundEffects } from '@/components/BackgroundEffects';
-import { CustomCursor } from '@/components/CustomCursor';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
 export default function WritingPage() {
-  // Initialize custom 3D tilt effect for cards
-  useEffect(() => {
-    if (window.matchMedia('(pointer: coarse)').matches) return;
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-    const cards = document.querySelectorAll<HTMLElement>('.tilt-card');
-    const settings = {
-      max: 8.5,
-      perspective: 1000,
-      scale: 1.021,
-      speed: 500,
-    };
-
-    const handlers: Array<{ el: HTMLElement; enter: () => void; move: (e: MouseEvent) => void; leave: () => void }> = [];
-
-    cards.forEach((card) => {
-      const onEnter = () => {
-        card.style.transition = `transform ${settings.speed}ms ease-out`;
-      };
-      const onMove = (e: MouseEvent) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -settings.max;
-        const rotateY = ((x - centerX) / centerX) * settings.max;
-        card.style.setProperty(
-          'transform',
-          `perspective(${settings.perspective}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${settings.scale})`,
-          'important'
-        );
-        card.style.transition = 'transform 100ms ease-out';
-      };
-      const onLeave = () => {
-        card.style.setProperty(
-          'transform',
-          `perspective(${settings.perspective}px) rotateX(0deg) rotateY(0deg) scale(1)`,
-          'important'
-        );
-        card.style.transition = `transform ${settings.speed}ms ease-out`;
-      };
-
-      card.addEventListener('mouseenter', onEnter);
-      card.addEventListener('mousemove', onMove);
-      card.addEventListener('mouseleave', onLeave);
-      handlers.push({ el: card, enter: onEnter, move: onMove, leave: onLeave });
-    });
-
-    return () => {
-      handlers.forEach(({ el, enter, move, leave }) => {
-        el.removeEventListener('mouseenter', enter);
-        el.removeEventListener('mousemove', move);
-        el.removeEventListener('mouseleave', leave);
-        el.style.removeProperty('transform');
-        el.style.removeProperty('transition');
-      });
-    };
-  }, []);
-
   return (
     <>
-      <CustomCursor />
       <BackgroundEffects />
 
       {/* Navigation */}
@@ -165,7 +102,7 @@ export default function WritingPage() {
                     <Link
                       key={post.slug}
                       href={`/writing/${post.slug}`}
-                      className="block glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 tilt-card hover:border-primary-500/30 cursor-pointer"
+                      className="block glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 content-card hover:border-primary-500/30 cursor-pointer"
                     >
                       {articleContent}
                     </Link>
@@ -175,7 +112,7 @@ export default function WritingPage() {
                 return (
                   <article
                     key={post.slug}
-                    className="glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 tilt-card opacity-75"
+                    className="glass-surface rounded-2xl p-6 md:p-8 transition-all duration-300 content-card opacity-75"
                   >
                     {articleContent}
                   </article>
@@ -184,7 +121,7 @@ export default function WritingPage() {
             </div>
 
             {/* Call to Action */}
-            <div className="mt-16 text-center glass-surface rounded-2xl p-8 tilt-card">
+            <div className="mt-16 text-center glass-surface rounded-2xl p-8 content-card">
               <i className="fa-solid fa-pen-nib text-4xl text-accent-500 mb-4"></i>
               <h3 className="text-xl font-bold mb-2">More posts coming soon</h3>
               <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">

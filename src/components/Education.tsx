@@ -12,7 +12,7 @@ export function Education() {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="glass-surface rounded-2xl p-8 tilt-card">
+          <div className="glass-surface rounded-2xl p-8 content-card">
             <div className="flex items-start justify-between gap-6">
               <div>
                 <h3 className="text-xl font-bold text-slate-950 dark:text-white">University of Utah</h3>
@@ -57,7 +57,7 @@ export function Education() {
             </div>
           </div>
 
-          <div className="glass-surface rounded-2xl p-8 tilt-card">
+          <div className="glass-surface rounded-2xl p-8 content-card">
             <div className="flex items-start justify-between gap-6">
               <div>
                 <h3 className="text-xl font-bold text-slate-950 dark:text-white">Savitribai Phule Pune University</h3>

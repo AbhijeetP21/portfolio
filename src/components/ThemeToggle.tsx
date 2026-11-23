@@ -12,7 +12,7 @@ export function ThemeToggle({ mobile = false }: ThemeToggleProps) {
   if (!mounted) {
     return (
       <button
-        className={`w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all grid place-items-center cursor-target ${
+        className={`w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all grid place-items-center ${
           mobile ? 'md:hidden' : ''
         }`}
         aria-label="Toggle theme"
@@ -27,8 +27,8 @@ export function ThemeToggle({ mobile = false }: ThemeToggleProps) {
       onClick={toggleTheme}
       className={`${
         mobile
-          ? 'px-5 py-3 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all flex items-center gap-3 cursor-target'
-          : 'w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all grid place-items-center cursor-target'
+          ? 'px-5 py-3 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all flex items-center gap-3'
+          : 'w-10 h-10 rounded-full border border-slate-200 dark:border-slate-700 bg-white/70 dark:bg-slate-900/60 hover:scale-105 transition-all grid place-items-center'
       }`}
       aria-label="Toggle theme"
     >
