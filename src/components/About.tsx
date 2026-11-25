@@ -19,8 +19,8 @@ export function About() {
 
             <p>
               I started my journey in India, where I worked on early research, patents, and engineering projects before
-              moving to the U.S. and completing my MS in Computer Science at the University of Utah, deepening my
-              foundation in systems, algorithms, and applied AI.
+              moving to the U.S., where I earned my MS in Computer Science at the University of Utah (May 2026), which
+              deepened my foundation in systems, algorithms, and applied AI.
             </p>
 
             <p>
