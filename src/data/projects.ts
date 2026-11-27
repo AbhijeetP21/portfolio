@@ -9,6 +9,7 @@ export interface Project {
   featured?: boolean; // Featured projects appear first
   youtubeUrl?: string; // YouTube video URL for embed (takes priority over images)
   liveUrl?: string; // Live site URL for preview (used if no youtubeUrl)
+  embedPreview?: boolean; // Set false when the live site refuses to be framed; shows a static preview instead
   links?: {
     github?: string;
     demo?: string;
@@ -28,6 +29,7 @@ export const projects: Project[] = [
     tags: ['Next.js', 'TypeScript', 'Supabase', 'PostgreSQL', 'Vercel'],
     featured: true,
     liveUrl: 'https://clipsync.abhijeetpachpute.com',
+    embedPreview: false,
     links: {
       github: 'https://github.com/AbhijeetP21/ClipSync',
       demo: 'https://clipsync.abhijeetpachpute.com',
