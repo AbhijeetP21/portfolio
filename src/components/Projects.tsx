@@ -186,10 +186,26 @@ export function Projects() {
                     rel="noopener noreferrer"
                     className="project-image-container relative w-full h-56 overflow-hidden bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center gap-4"
                   >
-                    <i className={`fa-solid ${project.icon} text-6xl ${project.iconColor} transition-transform duration-300 group-hover:scale-110`}></i>
-                    <span className="bg-slate-900/80 dark:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">
-                      <i className="fa-solid fa-external-link-alt mr-2"></i>Open Live Site
-                    </span>
+                    {project.images && project.images.length > 0 ? (
+                      <>
+                        <img
+                          src={project.images[0]}
+                          alt={`${project.title} preview`}
+                          className="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <span className="relative opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">
+                          <i className="fa-solid fa-external-link-alt mr-2"></i>Open Live Site
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <i className={`fa-solid ${project.icon} text-6xl ${project.iconColor} transition-transform duration-300 group-hover:scale-110`}></i>
+                        <span className="bg-slate-900/80 dark:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-white text-sm font-semibold">
+                          <i className="fa-solid fa-external-link-alt mr-2"></i>Open Live Site
+                        </span>
+                      </>
+                    )}
                   </a>
                 ) : project.liveUrl ? (
                   // Live Site Preview (iframe)
